@@ -1,0 +1,17 @@
+server:
+  port: 9000
+logging:
+  level:
+    root: info
+    org.springframework.web: info
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+    io.lazyegg: debug
+#    org.springframework.boot.autoconfigure: DEBUG
+spring:
+  datasource:
+    url: jdbc:mysql://rm-2ze0959ps2y92s959ro.mysql.rds.aliyuncs.com:3306/lazyegg
+    username: nsmeng3
+    password: 125800Wang
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
