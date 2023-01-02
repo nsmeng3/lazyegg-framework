@@ -1,0 +1,5 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  io.lazyegg.boot.component.db.properties.DataSourceProperties,\
+  io.lazyegg.boot.component.db.properties.DynamicDataSourceProperties,\
+  io.lazyegg.boot.component.db.aspect.DataSourceAspect\
