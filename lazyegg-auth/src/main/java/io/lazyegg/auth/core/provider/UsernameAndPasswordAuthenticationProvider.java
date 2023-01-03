@@ -1,13 +1,16 @@
 package io.lazyegg.auth.core.provider;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * 登录处理
@@ -16,19 +19,24 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UsernameAndPasswordAuthenticationProvider implements AuthenticationProvider {
-    private static final Logger log = LoggerFactory.getLogger(UsernameAndPasswordAuthenticationProvider.class);
 
+    @Resource
+    private UserDetailsService userDetailsService;
+
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-
-        if (("user2").equals(authentication.getPrincipal())) {
-
-            return new UsernamePasswordAuthenticationToken("user", "p");
-        } else {
+        String principal = String.valueOf(authentication.getPrincipal());
+        String credentials = String.valueOf(authentication.getCredentials());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(principal);
+        String password = userDetails.getPassword();
+        boolean matches = passwordEncoder.matches(credentials, password);
+        if (!matches) {
             throw new BadCredentialsException("账号或密码错误");
         }
+        return new UsernamePasswordAuthenticationToken(principal, authentication.getCredentials());
     }
 
     @Override
