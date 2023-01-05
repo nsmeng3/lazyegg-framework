@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class MyBatisPlusConfig extends JoinDefaultSqlInjector {
+public class MyBatisPlusJoinConfig extends JoinDefaultSqlInjector {
 
     /**
      * @param mapperClass 当前mapper
