@@ -1,4 +1,4 @@
-package io.lazyegg.boot.usermanagent.app;
+package io.lazyegg.boot.usermanagement.app;
 
 import org.junit.jupiter.api.Test;
 

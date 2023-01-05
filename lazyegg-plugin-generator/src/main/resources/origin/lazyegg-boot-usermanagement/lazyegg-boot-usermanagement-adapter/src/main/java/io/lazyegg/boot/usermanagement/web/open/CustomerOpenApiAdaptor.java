@@ -21,7 +21,7 @@ import javax.annotation.Resource;
  */
 
 @RestController
-@RequestMapping("/api/open/usermanagent")
+@RequestMapping("/api/open/usermanagement")
 public class CustomerOpenApiAdaptor {
     private static final Logger log = LoggerFactory.getLogger(CustomerOpenApiAdaptor.class);
 

@@ -63,7 +63,7 @@ public class VmTemplateGenCmdExe {
 
     private void initPlaceholder(VmTemplateGenContext context) {
         context.putPlaceholder("io.lazyegg.boot", "${package}");
-        context.putPlaceholder("usermanagent", "${moduleName}");
+        context.putPlaceholder("usermanagement", "${moduleName}");
         context.putPlaceholder("customer", "${entityName}");
         context.putPlaceholder("Customer", "${entityClassName}");
         context.putPlaceholder("__javaFilePrefix__", "Customer");

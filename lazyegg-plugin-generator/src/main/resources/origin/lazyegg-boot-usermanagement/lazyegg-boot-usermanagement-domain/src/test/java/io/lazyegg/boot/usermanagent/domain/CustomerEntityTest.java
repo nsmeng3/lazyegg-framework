@@ -1,4 +1,4 @@
-package io.lazyegg.boot.usermanagent.domain;
+package io.lazyegg.boot.usermanagement.domain;
 
 
 public class CustomerEntityTest {

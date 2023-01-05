@@ -1,4 +1,4 @@
-package io.lazyegg.boot.usermanagent.app;
+package io.lazyegg.boot.usermanagement.app;
 
 
 public class CustomerConvertorTest {

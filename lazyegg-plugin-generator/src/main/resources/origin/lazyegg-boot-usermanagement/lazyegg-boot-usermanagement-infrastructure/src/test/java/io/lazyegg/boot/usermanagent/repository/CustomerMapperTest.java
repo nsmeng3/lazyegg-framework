@@ -1,4 +1,4 @@
-package io.lazyegg.boot.usermanagent.repository;
+package io.lazyegg.boot.usermanagement.repository;
 
 
 public class CustomerMapperTest {
