@@ -3,9 +3,11 @@ package io.lazyegg.auth.core.handler;
 import io.jsonwebtoken.Claims;
 import io.lazyegg.auth.core.exception.InvalidTokenException;
 import io.lazyegg.auth.core.util.JwtUtil;
+import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * JwtAuthenticationFilter
@@ -43,7 +46,12 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
         }
         String token = bearer.replace("Bearer ", "");
         if (!JwtUtil.verifyToken(token)) {
-            throw new InvalidTokenException();
+            HashMap<String, Object> result = new HashMap<>();
+            result.put("code", 498);
+            result.put("message", "无效令牌");
+            LeggResponsePrintUtil.writeJson(response, result, 498);
+//            throw new InvalidTokenException();
+            return;
         }
         SecurityContext context = SecurityContextHolder.createEmptyContext();
 
