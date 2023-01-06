@@ -1,5 +1,6 @@
 package io.lazyegg.boot.component.db.config;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
@@ -62,6 +63,7 @@ public class MybatisPlusConfig {
         dbConfig.setLogicDeleteField("is_delete");
         dbConfig.setLogicDeleteValue("1");
         dbConfig.setLogicNotDeleteValue("0");
+        dbConfig.setIdType(IdType.ASSIGN_UUID);
         return dbConfig;
     }
 

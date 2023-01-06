@@ -16,6 +16,7 @@ import java.util.Date;
 @Data
 public class BaseDO {
 
+//    @TableField(fill = FieldFill.INSERT)
     private String id;
 
     @TableField(fill = FieldFill.INSERT)

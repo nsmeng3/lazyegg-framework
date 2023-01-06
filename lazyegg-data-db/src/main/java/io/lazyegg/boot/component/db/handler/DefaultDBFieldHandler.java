@@ -23,6 +23,7 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
         // 获取当前用户信息
 //        LoginUser loginUser = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        this.setFieldValByName("creator",loginUser.getUser().getUserName(),metaObject);
+//        this.setFieldValByName("id", "1111" + System.currentTimeMillis(), metaObject);
         this.setFieldValByName("createTime", new Date(), metaObject);
         this.setFieldValByName("updateTime", new Date(), metaObject);
         this.setFieldValByName("enabled", true, metaObject);
