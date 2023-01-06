@@ -18,13 +18,15 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         // 可以通过 getFieldValByName()方法判断
-       // Object modifyTime = getFieldValByName("updateTime", metaObject);
-        log.info("进入创建");
+        // Object modifyTime = getFieldValByName("updateTime", metaObject);
+//        log.info("进入创建");
         // 获取当前用户信息
 //        LoginUser loginUser = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        this.setFieldValByName("createTime",new Date(),metaObject);
 //        this.setFieldValByName("creator",loginUser.getUser().getUserName(),metaObject);
-        this.setFieldValByName("updateTime",new Date(),metaObject);
+        this.setFieldValByName("createTime", new Date(), metaObject);
+        this.setFieldValByName("updateTime", new Date(), metaObject);
+        this.setFieldValByName("enabled", true, metaObject);
+        this.setFieldValByName("deleted", false, metaObject);
 //        this.setFieldValByName("updater",loginUser.getUser().getUserName(),metaObject);
     }
 
@@ -36,7 +38,7 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
             setFieldValByName("updateTime", new Date(), metaObject);
         }
         // 当前登录用户不为空，更新人为空，则当前登录用户为更新人
-        Object modifier = getFieldValByName("updater", metaObject);
+//        Object modifier = getFieldValByName("updater", metaObject);
 //        LoginUser loginUser = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        String userId = loginUser.getUser().getUserName();
 //        if (Objects.nonNull(userId) && Objects.isNull(modifier)) {
