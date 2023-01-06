@@ -1,8 +1,10 @@
 package io.lazyegg.boot.component.db.config;
 
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import io.lazyegg.boot.component.db.service.TenantService;
@@ -52,6 +54,23 @@ public class MybatisPlusConfig {
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor());
 
         return interceptor;
+    }
+
+
+    private GlobalConfig.DbConfig dbConfig() {
+        GlobalConfig.DbConfig dbConfig = new GlobalConfig.DbConfig();
+        dbConfig.setLogicDeleteField("is_delete");
+        dbConfig.setLogicDeleteValue("1");
+        dbConfig.setLogicNotDeleteValue("0");
+        return dbConfig;
+    }
+
+    @Bean
+    public GlobalConfig globalConfig() {
+        GlobalConfig globalConfig = new GlobalConfig();
+        globalConfig.setBanner(false);
+        globalConfig.setDbConfig(dbConfig());
+        return globalConfig;
     }
 
 
