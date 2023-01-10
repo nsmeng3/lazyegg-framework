@@ -3,6 +3,7 @@ package io.lazyegg.auth.core.handler;
 import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -31,7 +32,7 @@ public class JwtLogoutSuccessHandler implements LogoutSuccessHandler {
         HashMap<String, Object> result = new HashMap<>();
         result.put("code", 0);
         result.put("message", "登出成功");
-        LeggResponsePrintUtil.writeJson(response, result);
+        LeggResponsePrintUtil.writeJson(response, result, HttpStatus.OK.value());
     }
 }
 

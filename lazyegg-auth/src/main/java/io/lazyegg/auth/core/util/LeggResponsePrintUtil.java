@@ -3,6 +3,7 @@ package io.lazyegg.auth.core.util;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletResponse;
@@ -21,7 +22,7 @@ import java.util.Map;
 public abstract class LeggResponsePrintUtil {
     private static final Logger log = LoggerFactory.getLogger(LeggResponsePrintUtil.class);
 
-    public static void writeJson(HttpServletResponse response, Map<String, Object> result) throws IOException {
+    private static void writeJson(HttpServletResponse response, Map<String, Object> result) throws IOException {
         response.setContentType("application/json; charset=UTF-8");
         response.setStatus(500);
         ServletOutputStream outputStream = response.getOutputStream();
@@ -35,13 +36,16 @@ public abstract class LeggResponsePrintUtil {
         outputStream.close();
     }
 
-    public static void writeJson(HttpServletResponse response, Map<String, Object> result, int code) throws IOException {
+    public static void writeJson(HttpServletResponse response, Map<String, Object> result, HttpStatus statusCode) throws IOException {
+       writeJson(response, result, statusCode.value());
+    }
+    public static void writeJson(HttpServletResponse response, Map<String, Object> result, int statusCode) throws IOException {
         response.setContentType("application/json; charset=UTF-8");
-        response.setStatus(code);
+        response.setStatus(statusCode);
         ServletOutputStream outputStream = response.getOutputStream();
         if (result == null) {
             result = new HashMap<>();
-            result.put("code", code);
+            result.put("code", statusCode);
             result.put("message", "未知异常");
         }
         outputStream.write(JSONObject.toJSONString(result).getBytes(Charset.defaultCharset()));

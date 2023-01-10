@@ -3,6 +3,7 @@ package io.lazyegg.auth.core.handler;
 import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -27,9 +28,9 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         response.setContentType("application/json; charset=UTF-8");
         HashMap<String, Object> o = new HashMap<>();
-        o.put("code", HttpServletResponse.SC_UNAUTHORIZED);
+        o.put("code", HttpStatus.UNAUTHORIZED.value());
         o.put("message", "认证失败,请登录");
-        LeggResponsePrintUtil.writeJson(response, o);
+        LeggResponsePrintUtil.writeJson(response, o, HttpStatus.UNAUTHORIZED);
     }
 }
 

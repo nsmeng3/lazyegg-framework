@@ -4,13 +4,11 @@ import io.lazyegg.auth.core.handler.*;
 import io.lazyegg.auth.core.provider.UsernameAndPasswordAuthenticationProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
 
@@ -22,9 +20,13 @@ import javax.annotation.Resource;
 
 @Configuration
 public class LazyeggSecurityConfig {
+    private static final String LOGIN_URL = "/auth/login";
+    private static final String LOGOUT_URL = "/auth/logout";
     private static final String[] URL_WHITELIST = {
         "/a/**",
-        "/login",
+        LOGIN_URL,
+        LOGOUT_URL,
+        "/auth/logout",
         "/doc.html",
         "/webjars/**",
         "/swagger-resources",
@@ -45,17 +47,19 @@ public class LazyeggSecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        ProviderManager authenticationManager = new ProviderManager(usernameAndPasswordAuthenticationProvider);
         http
             .cors()
             .and()
             .csrf().disable()
-            .logout(logout -> logout.logoutSuccessHandler(logoutSuccessHandler))
+            .logout(logout -> logout.logoutSuccessHandler(logoutSuccessHandler).logoutUrl(LOGOUT_URL))
             // 禁用session
             .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .formLogin(configurer -> {
-                configurer.successHandler(successHandler);
-                configurer.failureHandler(failureHandler);
-            })
+//            .formLogin(configurer -> {
+//                configurer.successHandler(successHandler);
+//                configurer.failureHandler(failureHandler);
+//                configurer.loginProcessingUrl(LOGIN_URL);
+//            })
             .authorizeHttpRequests(authorizeHttpRequests -> {
                 authorizeHttpRequests.mvcMatchers(URL_WHITELIST).permitAll();
                 authorizeHttpRequests.anyRequest().authenticated();
@@ -63,11 +67,12 @@ public class LazyeggSecurityConfig {
             // 异常处理
             .exceptionHandling(
                 httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
-                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                    .authenticationEntryPoint(jwtAuthenticationEntryPoint)
             )
             // 认证管理
-            .authenticationManager(new ProviderManager(usernameAndPasswordAuthenticationProvider))
+//            .authenticationManager(authenticationManager)
             // 过滤器
+            .addFilterBefore(usernamePasswordBodyAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
             .addFilter(jwtAuthenticationFilter())
         ;
         return http.build();
@@ -78,5 +83,13 @@ public class LazyeggSecurityConfig {
         LeggAuthenticationFilter leggAuthenticationFilter = new LeggAuthenticationFilter(authentication -> null);
         return leggAuthenticationFilter;
     }
+
+    @Bean
+    UsernamePasswordBodyAuthenticationFilter usernamePasswordBodyAuthenticationFilter() {
+        ProviderManager providerManager = new ProviderManager(usernameAndPasswordAuthenticationProvider);
+        UsernamePasswordBodyAuthenticationFilter leggAuthenticationFilter = new UsernamePasswordBodyAuthenticationFilter(LOGIN_URL, providerManager);
+        return leggAuthenticationFilter;
+    }
+
 
 }
