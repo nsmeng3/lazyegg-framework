@@ -14,6 +14,7 @@ import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Service
@@ -40,42 +41,50 @@ public class CustomerServiceImpl implements CustomerServiceI {
     private CustomerListByNameQryExe customerListByNameQryExe;
 
     public Response addCustomer(CustomerAddCmd customerAddCmd) {
-        return customerAddCmdExe.execute(customerAddCmd);
+        customerAddCmdExe.execute(customerAddCmd);
+        return Response.buildSuccess();
     }
 
     @Override
     public MultiResponse<CustomerDTO> listByName(CustomerListByNameQry customerListByNameQry) {
-        return customerListByNameQryExe.execute(customerListByNameQry);
+        List<CustomerDTO> execute = customerListByNameQryExe.execute(customerListByNameQry);
+        return MultiResponse.of(execute);
     }
 
     @Override
-    public void removeCustomer(CustomerDelCmd customerDelCmd) {
+    public Response removeCustomer(CustomerDelCmd customerDelCmd) {
         customerDelCmdExe.execute(customerDelCmd);
+        return Response.buildSuccess();
     }
 
     @Override
     public Response updateCustomer(CustomerUpdateCmd cmd) {
-        return customerUpdateCmdExe.execute(cmd);
+        customerUpdateCmdExe.execute(cmd);
+        return Response.buildSuccess();
     }
 
     @Override
     public SingleResponse<CustomerDTO> getCustomer(CustomerGetQry qry) {
-        return customerGetQryExe.execute(qry);
+        CustomerDTO execute = customerGetQryExe.execute(qry);
+        return SingleResponse.of(execute);
     }
 
     @Override
     public MultiResponse<CustomerDTO> listCustomer(CustomerListQry listQry) {
-        return customerListQryExe.execute(listQry);
+        List<CustomerDTO> execute = customerListQryExe.execute(listQry);
+        return MultiResponse.of(execute);
     }
 
     @Override
     public MultiResponse<CustomerDTO> pageCustomer(CustomerPageQry pageQry) {
-        return customerPageQryExe.execute(pageQry);
+        List<CustomerDTO> execute = customerPageQryExe.execute(pageQry);
+        return MultiResponse.of(execute);
     }
 
     @Override
     public SingleResponse<CustomerDTO> countCustomer(CustomerCountQry countQry) {
-        return customerCountQryExe.execute(countQry);
+        CustomerDTO execute = customerCountQryExe.execute(countQry);
+        return SingleResponse.of(execute);
     }
 
 

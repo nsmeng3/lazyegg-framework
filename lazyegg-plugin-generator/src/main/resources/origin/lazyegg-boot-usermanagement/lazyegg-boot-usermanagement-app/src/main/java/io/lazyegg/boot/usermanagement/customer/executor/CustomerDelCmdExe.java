@@ -1,6 +1,5 @@
 package io.lazyegg.boot.usermanagement.customer.executor;
 
-import com.alibaba.cola.dto.Response;
 import io.lazyegg.boot.usermanagement.domain.customer.gateway.CustomerGateway;
 import io.lazyegg.boot.usermanagement.dto.CustomerDelCmd;
 import org.slf4j.Logger;
@@ -22,9 +21,9 @@ public class CustomerDelCmdExe {
     @Resource
     private CustomerGateway customerGateway;
 
-    public Response execute(CustomerDelCmd customerDelCmd) {
+    public void execute(CustomerDelCmd customerDelCmd) {
         customerGateway.removeCustomer(customerDelCmd);
-        return Response.buildSuccess();
+        return;
     }
 }
 

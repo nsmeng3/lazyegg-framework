@@ -22,9 +22,9 @@ public class CustomerUpdateCmdExe {
     @Resource
     private CustomerGateway customerGateway;
 
-    public Response execute(CustomerUpdateCmd cmd) {
+    public void execute(CustomerUpdateCmd cmd) {
         customerGateway.updateCustomer(cmd);
-        return Response.buildSuccess();
+        return;
     }
 }
 

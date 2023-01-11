@@ -15,9 +15,9 @@ public class CustomerGetQryExe {
     @Autowired
     private CustomerGateway customerGateway;
 
-    public SingleResponse<CustomerDTO> execute(CustomerGetQry qry) {
+    public CustomerDTO execute(CustomerGetQry qry) {
         Customer byById = customerGateway.getByById("1");
         CustomerDTO customerDTO = new CustomerDTO();
-        return SingleResponse.of(customerDTO);
+        return customerDTO;
     }
 }

@@ -1,6 +1,5 @@
 package ${package}.${moduleName}.${entityName}.executor;
 
-import com.alibaba.cola.dto.Response;
 import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
 import ${package}.${moduleName}.dto.${entityClassName}DelCmd;
 import org.slf4j.Logger;
@@ -22,9 +21,9 @@ public class ${entityClassName}DelCmdExe {
     @Resource
     private ${entityClassName}Gateway ${entityName}Gateway;
 
-    public Response execute(${entityClassName}DelCmd ${entityName}DelCmd) {
+    public void execute(${entityClassName}DelCmd ${entityName}DelCmd) {
         ${entityName}Gateway.remove${entityClassName}(${entityName}DelCmd);
-        return Response.buildSuccess();
+        return;
     }
 }
 

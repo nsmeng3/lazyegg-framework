@@ -15,9 +15,9 @@ public class ${entityClassName}GetQryExe {
     @Autowired
     private ${entityClassName}Gateway ${entityName}Gateway;
 
-    public SingleResponse<${entityClassName}DTO> execute(${entityClassName}GetQry qry) {
+    public ${entityClassName}DTO execute(${entityClassName}GetQry qry) {
         ${entityClassName} byById = ${entityName}Gateway.getByById("1");
         ${entityClassName}DTO ${entityName}DTO = new ${entityClassName}DTO();
-        return SingleResponse.of(${entityName}DTO);
+        return ${entityName}DTO;
     }
 }

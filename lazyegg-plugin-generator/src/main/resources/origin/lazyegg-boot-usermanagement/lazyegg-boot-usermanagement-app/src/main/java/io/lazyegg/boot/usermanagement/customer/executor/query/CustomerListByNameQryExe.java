@@ -18,9 +18,9 @@ public class CustomerListByNameQryExe {
     @Autowired
     private CustomerGateway customerGateway;
 
-    public MultiResponse<CustomerDTO> execute(CustomerListByNameQry cmd) {
+    public List<CustomerDTO> execute(CustomerListByNameQry qry) {
         Customer byById = customerGateway.getByById("1");
         List<CustomerDTO> customerDTOList = new ArrayList<>();
-        return MultiResponse.of(customerDTOList);
+        return customerDTOList;
     }
 }

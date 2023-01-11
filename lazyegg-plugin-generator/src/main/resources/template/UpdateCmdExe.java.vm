@@ -22,9 +22,9 @@ public class ${entityClassName}UpdateCmdExe {
     @Resource
     private ${entityClassName}Gateway ${entityName}Gateway;
 
-    public Response execute(${entityClassName}UpdateCmd cmd) {
+    public void execute(${entityClassName}UpdateCmd cmd) {
         ${entityName}Gateway.update${entityClassName}(cmd);
-        return Response.buildSuccess();
+        return;
     }
 }
 

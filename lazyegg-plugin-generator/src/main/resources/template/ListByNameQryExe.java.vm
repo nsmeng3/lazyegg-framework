@@ -18,9 +18,9 @@ public class ${entityClassName}ListByNameQryExe {
     @Autowired
     private ${entityClassName}Gateway ${entityName}Gateway;
 
-    public MultiResponse<${entityClassName}DTO> execute(${entityClassName}ListByNameQry cmd) {
+    public List<${entityClassName}DTO> execute(${entityClassName}ListByNameQry qry) {
         ${entityClassName} byById = ${entityName}Gateway.getByById("1");
         List<${entityClassName}DTO> ${entityName}DTOList = new ArrayList<>();
-        return MultiResponse.of(${entityName}DTOList);
+        return ${entityName}DTOList;
     }
 }

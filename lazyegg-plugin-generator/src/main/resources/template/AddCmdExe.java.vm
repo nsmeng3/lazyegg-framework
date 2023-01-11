@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ${entityClassName}AddCmdExe {
 
-    public Response execute(${entityClassName}AddCmd cmd) {
+    public void execute(${entityClassName}AddCmd cmd) {
         //The flow of usecase is defined here.
         //The core ablility should be implemented in Domain. or sink to Domian gradually
 
-        return Response.buildSuccess();
+        return;
     }
 
 }

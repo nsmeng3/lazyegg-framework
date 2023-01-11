@@ -1,6 +1,5 @@
 package io.lazyegg.boot.usermanagement.customer.executor.query;
 
-import com.alibaba.cola.dto.MultiResponse;
 import io.lazyegg.boot.usermanagement.domain.customer.Customer;
 import io.lazyegg.boot.usermanagement.domain.customer.gateway.CustomerGateway;
 import io.lazyegg.boot.usermanagement.dto.CustomerPageQry;
@@ -18,9 +17,10 @@ public class CustomerPageQryExe {
     @Autowired
     private CustomerGateway customerGateway;
 
-    public MultiResponse<CustomerDTO> execute(CustomerPageQry qry) {
+    public List<CustomerDTO> execute(CustomerPageQry qry) {
         List<Customer> customerList = customerGateway.pageCustomer(qry.getPageIndex(), qry.getPageSize());
 
-        return MultiResponse.of(new ArrayList<>());
+        ArrayList<CustomerDTO> customerDTOS = new ArrayList<>();
+        return customerDTOS;
     }
 }

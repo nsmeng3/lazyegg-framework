@@ -12,7 +12,7 @@ public interface ${entityClassName}ServiceI {
 
     MultiResponse<${entityClassName}DTO> listByName(${entityClassName}ListByNameQry qry);
 
-    void remove${entityClassName}(${entityClassName}DelCmd cmd);
+    Response remove${entityClassName}(${entityClassName}DelCmd cmd);
 
     Response update${entityClassName}(${entityClassName}UpdateCmd cmd);
 

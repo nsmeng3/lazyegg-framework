@@ -14,6 +14,7 @@ import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Service
@@ -40,42 +41,50 @@ public class ${entityClassName}ServiceImpl implements ${entityClassName}ServiceI
     private ${entityClassName}ListByNameQryExe ${entityName}ListByNameQryExe;
 
     public Response add${entityClassName}(${entityClassName}AddCmd ${entityName}AddCmd) {
-        return ${entityName}AddCmdExe.execute(${entityName}AddCmd);
+        ${entityName}AddCmdExe.execute(${entityName}AddCmd);
+        return Response.buildSuccess();
     }
 
     @Override
     public MultiResponse<${entityClassName}DTO> listByName(${entityClassName}ListByNameQry ${entityName}ListByNameQry) {
-        return ${entityName}ListByNameQryExe.execute(${entityName}ListByNameQry);
+        List<${entityClassName}DTO> execute = ${entityName}ListByNameQryExe.execute(${entityName}ListByNameQry);
+        return MultiResponse.of(execute);
     }
 
     @Override
-    public void remove${entityClassName}(${entityClassName}DelCmd ${entityName}DelCmd) {
+    public Response remove${entityClassName}(${entityClassName}DelCmd ${entityName}DelCmd) {
         ${entityName}DelCmdExe.execute(${entityName}DelCmd);
+        return Response.buildSuccess();
     }
 
     @Override
     public Response update${entityClassName}(${entityClassName}UpdateCmd cmd) {
-        return ${entityName}UpdateCmdExe.execute(cmd);
+        ${entityName}UpdateCmdExe.execute(cmd);
+        return Response.buildSuccess();
     }
 
     @Override
     public SingleResponse<${entityClassName}DTO> get${entityClassName}(${entityClassName}GetQry qry) {
-        return ${entityName}GetQryExe.execute(qry);
+        ${entityClassName}DTO execute = ${entityName}GetQryExe.execute(qry);
+        return SingleResponse.of(execute);
     }
 
     @Override
     public MultiResponse<${entityClassName}DTO> list${entityClassName}(${entityClassName}ListQry listQry) {
-        return ${entityName}ListQryExe.execute(listQry);
+        List<${entityClassName}DTO> execute = ${entityName}ListQryExe.execute(listQry);
+        return MultiResponse.of(execute);
     }
 
     @Override
     public MultiResponse<${entityClassName}DTO> page${entityClassName}(${entityClassName}PageQry pageQry) {
-        return ${entityName}PageQryExe.execute(pageQry);
+        List<${entityClassName}DTO> execute = ${entityName}PageQryExe.execute(pageQry);
+        return MultiResponse.of(execute);
     }
 
     @Override
     public SingleResponse<${entityClassName}DTO> count${entityClassName}(${entityClassName}CountQry countQry) {
-        return ${entityName}CountQryExe.execute(countQry);
+        ${entityClassName}DTO execute = ${entityName}CountQryExe.execute(countQry);
+        return SingleResponse.of(execute);
     }
 
 

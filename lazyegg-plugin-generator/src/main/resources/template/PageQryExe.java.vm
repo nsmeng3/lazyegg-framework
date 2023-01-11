@@ -1,6 +1,5 @@
 package ${package}.${moduleName}.${entityName}.executor.query;
 
-import com.alibaba.cola.dto.MultiResponse;
 import ${package}.${moduleName}.domain.${entityName}.${entityClassName};
 import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
 import ${package}.${moduleName}.dto.${entityClassName}PageQry;
@@ -18,9 +17,10 @@ public class ${entityClassName}PageQryExe {
     @Autowired
     private ${entityClassName}Gateway ${entityName}Gateway;
 
-    public MultiResponse<${entityClassName}DTO> execute(${entityClassName}PageQry qry) {
+    public List<${entityClassName}DTO> execute(${entityClassName}PageQry qry) {
         List<${entityClassName}> ${entityName}List = ${entityName}Gateway.page${entityClassName}(qry.getPageIndex(), qry.getPageSize());
 
-        return MultiResponse.of(new ArrayList<>());
+        ArrayList<${entityClassName}DTO> ${entityName}DTOS = new ArrayList<>();
+        return ${entityName}DTOS;
     }
 }

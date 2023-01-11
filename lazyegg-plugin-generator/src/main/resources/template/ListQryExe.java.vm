@@ -17,9 +17,9 @@ public class ${entityClassName}ListQryExe {
     @Autowired
     private ${entityClassName}Gateway ${entityName}Gateway;
 
-    public MultiResponse<${entityClassName}DTO> execute(${entityClassName}ListQry qry) {
+    public List<${entityClassName}DTO> execute(${entityClassName}ListQry qry) {
         List<${entityClassName}DTO> ${entityName}DTOList = new ArrayList<>();
         ${entityClassName}DTO ${entityName}DTO = new ${entityClassName}DTO();
-        return MultiResponse.of(${entityName}DTOList);
+        return ${entityName}DTOList;
     }
 }

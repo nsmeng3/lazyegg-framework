@@ -12,7 +12,7 @@ public interface CustomerServiceI {
 
     MultiResponse<CustomerDTO> listByName(CustomerListByNameQry qry);
 
-    void removeCustomer(CustomerDelCmd cmd);
+    Response removeCustomer(CustomerDelCmd cmd);
 
     Response updateCustomer(CustomerUpdateCmd cmd);
 

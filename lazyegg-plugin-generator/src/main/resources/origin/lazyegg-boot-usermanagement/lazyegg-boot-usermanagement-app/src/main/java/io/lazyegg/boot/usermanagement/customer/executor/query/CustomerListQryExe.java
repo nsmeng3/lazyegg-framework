@@ -17,9 +17,9 @@ public class CustomerListQryExe {
     @Autowired
     private CustomerGateway customerGateway;
 
-    public MultiResponse<CustomerDTO> execute(CustomerListQry qry) {
+    public List<CustomerDTO> execute(CustomerListQry qry) {
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         CustomerDTO customerDTO = new CustomerDTO();
-        return MultiResponse.of(customerDTOList);
+        return customerDTOList;
     }
 }

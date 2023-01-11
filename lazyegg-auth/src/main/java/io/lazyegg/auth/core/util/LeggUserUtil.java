@@ -1,5 +1,7 @@
 package io.lazyegg.auth.core.util;
 
+import io.lazyegg.auth.core.exception.IdentityException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -19,7 +21,16 @@ public class LeggUserUtil {
     public static String getCurrentUsername() {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
-        return String.valueOf(authentication.getPrincipal());
+        String username;
+        try {
+            username = String.valueOf(authentication.getPrincipal());
+        } catch (Exception e) {
+            throw new IdentityException(e);
+        }
+        if (StringUtils.isBlank(username)) {
+            throw new IdentityException();
+        }
+        return username;
     }
 }
 
