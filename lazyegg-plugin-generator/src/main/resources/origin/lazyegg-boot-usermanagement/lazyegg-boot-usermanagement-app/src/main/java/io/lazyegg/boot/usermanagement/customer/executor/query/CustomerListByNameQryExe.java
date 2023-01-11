@@ -21,9 +21,6 @@ public class CustomerListByNameQryExe {
     public MultiResponse<CustomerDTO> execute(CustomerListByNameQry cmd) {
         Customer byById = customerGateway.getByById("1");
         List<CustomerDTO> customerDTOList = new ArrayList<>();
-        CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setCustomerName("DifferentW");
-        customerDTOList.add(customerDTO);
         return MultiResponse.of(customerDTOList);
     }
 }

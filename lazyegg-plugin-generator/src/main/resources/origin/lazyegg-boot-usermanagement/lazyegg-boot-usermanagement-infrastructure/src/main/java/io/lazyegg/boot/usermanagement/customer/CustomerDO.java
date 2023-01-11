@@ -1,12 +1,10 @@
 package io.lazyegg.boot.usermanagement.customer;
 
 import lombok.Data;
+import io.lazyegg.boot.component.db.entity.BaseDO;
 
 @Data
-public class CustomerDO {
-    private String customerId;
-    private String memberId;
-    private String globalId;
-    private long registeredCapital;
-    private String companyName;
+@TableName("customer")
+public class CustomerDO extends BaseDO{
+
 }

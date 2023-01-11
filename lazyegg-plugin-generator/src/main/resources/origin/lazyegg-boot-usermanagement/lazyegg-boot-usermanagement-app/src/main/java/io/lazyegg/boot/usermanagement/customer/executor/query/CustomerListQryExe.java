@@ -20,8 +20,6 @@ public class CustomerListQryExe {
     public MultiResponse<CustomerDTO> execute(CustomerListQry qry) {
         List<CustomerDTO> customerDTOList = new ArrayList<>();
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setCustomerName("DifferentW");
-        customerDTOList.add(customerDTO);
         return MultiResponse.of(customerDTOList);
     }
 }

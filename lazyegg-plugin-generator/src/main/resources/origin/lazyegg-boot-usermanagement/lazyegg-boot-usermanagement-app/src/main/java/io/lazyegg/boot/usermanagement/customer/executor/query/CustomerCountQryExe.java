@@ -17,7 +17,6 @@ public class CustomerCountQryExe {
     public SingleResponse<CustomerDTO> execute(CustomerCountQry qry) {
         long count = customerGateway.getCount();
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setCustomerName("DifferentW");
         return SingleResponse.of(customerDTO);
     }
 }

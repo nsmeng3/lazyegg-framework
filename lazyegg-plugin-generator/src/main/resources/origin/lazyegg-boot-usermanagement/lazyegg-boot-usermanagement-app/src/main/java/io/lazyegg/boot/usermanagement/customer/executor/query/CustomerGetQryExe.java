@@ -18,7 +18,6 @@ public class CustomerGetQryExe {
     public SingleResponse<CustomerDTO> execute(CustomerGetQry qry) {
         Customer byById = customerGateway.getByById("1");
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setCustomerName("DifferentW");
         return SingleResponse.of(customerDTO);
     }
 }
