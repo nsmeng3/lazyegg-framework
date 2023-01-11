@@ -16,16 +16,13 @@ import java.util.Date;
 @Data
 public class BaseDO {
 
-//    @TableField(fill = FieldFill.INSERT)
+    //    @TableField(fill = FieldFill.INSERT)
     private String id;
 
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
     @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
-
-    @TableField(fill = FieldFill.INSERT, value = "is_enabled")
-    private Boolean enabled;
 
     @TableField(fill = FieldFill.INSERT, value = "is_deleted")
     private Boolean deleted;
