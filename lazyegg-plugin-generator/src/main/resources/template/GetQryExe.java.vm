@@ -1,0 +1,23 @@
+package ${package}.${moduleName}.${entityName}.executor.query;
+
+import com.alibaba.cola.dto.SingleResponse;
+import ${package}.${moduleName}.domain.${entityName}.${entityClassName};
+import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
+import ${package}.${moduleName}.dto.${entityClassName}GetQry;
+import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class ${entityClassName}GetQryExe {
+
+    @Autowired
+    private ${entityClassName}Gateway ${entityName}Gateway;
+
+    public SingleResponse<${entityClassName}DTO> execute(${entityClassName}GetQry qry) {
+        ${entityClassName} byById = ${entityName}Gateway.getByById("1");
+        ${entityClassName}DTO ${entityName}DTO = new ${entityClassName}DTO();
+        return SingleResponse.of(${entityName}DTO);
+    }
+}

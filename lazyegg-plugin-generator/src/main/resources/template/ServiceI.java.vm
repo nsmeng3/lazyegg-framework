@@ -1,0 +1,26 @@
+package ${package}.${moduleName}.api;
+
+import com.alibaba.cola.dto.MultiResponse;
+import com.alibaba.cola.dto.Response;
+import com.alibaba.cola.dto.SingleResponse;
+import ${package}.${moduleName}.dto.*;
+import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
+
+public interface ${entityClassName}ServiceI {
+
+    Response add${entityClassName}(${entityClassName}AddCmd cmd);
+
+    MultiResponse<${entityClassName}DTO> listByName(${entityClassName}ListByNameQry qry);
+
+    void remove${entityClassName}(${entityClassName}DelCmd cmd);
+
+    Response update${entityClassName}(${entityClassName}UpdateCmd cmd);
+
+    SingleResponse<${entityClassName}DTO> get${entityClassName}(${entityClassName}GetQry qry);
+
+    MultiResponse<${entityClassName}DTO> list${entityClassName}(${entityClassName}ListQry listQry);
+
+    MultiResponse<${entityClassName}DTO> page${entityClassName}(${entityClassName}PageQry pageQry);
+
+    SingleResponse<${entityClassName}DTO> count${entityClassName}(${entityClassName}CountQry countQry);
+}

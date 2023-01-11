@@ -5,6 +5,6 @@ import io.lazyegg.boot.component.db.entity.BaseDO;
 
 @Data
 @TableName("customer")
-public class CustomerDO extends BaseDO{
+public class CustomerDO extends JoinBaseDO{
 
 }

@@ -1,0 +1,26 @@
+package ${package}.${moduleName}.${entityName}.executor.query;
+
+import com.alibaba.cola.dto.MultiResponse;
+import ${package}.${moduleName}.domain.${entityName}.${entityClassName};
+import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
+import ${package}.${moduleName}.dto.${entityClassName}ListByNameQry;
+import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Component
+public class ${entityClassName}ListByNameQryExe {
+
+    @Autowired
+    private ${entityClassName}Gateway ${entityName}Gateway;
+
+    public MultiResponse<${entityClassName}DTO> execute(${entityClassName}ListByNameQry cmd) {
+        ${entityClassName} byById = ${entityName}Gateway.getByById("1");
+        List<${entityClassName}DTO> ${entityName}DTOList = new ArrayList<>();
+        return MultiResponse.of(${entityName}DTOList);
+    }
+}

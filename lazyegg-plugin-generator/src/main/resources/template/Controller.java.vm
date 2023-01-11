@@ -1,0 +1,100 @@
+package ${package}.${moduleName}.web;
+
+import com.alibaba.cola.dto.MultiResponse;
+import com.alibaba.cola.dto.Response;
+import com.alibaba.cola.dto.SingleResponse;
+import ${package}.${moduleName}.api.${entityClassName}ServiceI;
+import ${package}.${moduleName}.dto.*;
+import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+
+@RequestMapping("/${moduleName}")
+@RestController
+public class ${entityClassName}Controller {
+    private static final Logger log = LoggerFactory.getLogger(${entityClassName}Controller.class);
+
+    @Resource
+    private ${entityClassName}ServiceI ${entityName}Service;
+
+    @PostMapping("/${entityName}s")
+    public ResponseEntity<Response> add${entityClassName}(@RequestBody ${entityClassName}AddCmd cmd) {
+        return new ResponseEntity<>(${entityName}Service.add${entityClassName}(cmd), HttpStatus.CREATED);
+    }
+
+    /**
+     * 删除${entityName}
+     *
+     * @param id ${entityName}Id
+     * @return
+     */
+    @DeleteMapping("/${entityName}s/{id}")
+    public ResponseEntity<Response> remove${entityClassName}(@PathVariable(name = "id") String id) {
+        ${entityClassName}DelCmd ${entityName}DelCmd = new ${entityClassName}DelCmd(id);
+        ${entityName}Service.remove${entityClassName}(${entityName}DelCmd);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    /**
+     * 更新${entityName}
+     *
+     * @param id                ${entityName}Id
+     * @param ${entityName}UpdateCmd 更新实体
+     * @return
+     */
+    @PutMapping("/${entityName}s/{id}")
+    public ResponseEntity<Response> update${entityClassName}(@PathVariable(name = "id") String id, @RequestBody ${entityClassName}UpdateCmd ${entityName}UpdateCmd) {
+        return new ResponseEntity<>(${entityName}Service.update${entityClassName}(${entityName}UpdateCmd), HttpStatus.OK);
+    }
+
+    /**
+     * 查询${entityName}（单个结果）
+     *
+     * @param id ${entityName}Id
+     * @return
+     */
+    @GetMapping("/${entityName}s/{id}")
+    public ResponseEntity<SingleResponse<${entityClassName}DTO>> get${entityClassName}(@PathVariable(name = "id") String id) {
+        return new ResponseEntity<>(${entityName}Service.get${entityClassName}(new ${entityClassName}GetQry(id)), HttpStatus.OK);
+    }
+
+    /**
+     * 查询${entityName}（多个结果）
+     *
+     * @return
+     */
+    @GetMapping("/${entityName}s")
+    public ResponseEntity<MultiResponse<${entityClassName}DTO>> list${entityClassName}() {
+        return new ResponseEntity<>(${entityName}Service.list${entityClassName}(new ${entityClassName}ListQry()), HttpStatus.OK);
+    }
+
+
+    /**
+     * 分页查询${entityName}
+     *
+     * @return
+     */
+    @GetMapping(value = "/${entityName}s", params = {"page", "size"})
+    public ResponseEntity<MultiResponse<${entityClassName}DTO>> page${entityClassName}(@RequestParam int page, @RequestParam int size) {
+        ${entityClassName}PageQry pageQry = new ${entityClassName}PageQry();
+        pageQry.setPageIndex(page);
+        pageQry.setPageSize(size);
+        return new ResponseEntity<>(${entityName}Service.page${entityClassName}(pageQry), HttpStatus.OK);
+    }
+
+    /**
+     * 统计${entityName}
+     *
+     * @return
+     */
+    @GetMapping(value = "/${entityName}s/actions/count")
+    public ResponseEntity<SingleResponse<${entityClassName}DTO>> count${entityClassName}() {
+        return new ResponseEntity<>(${entityName}Service.count${entityClassName}(new ${entityClassName}CountQry()), HttpStatus.OK);
+    }
+
+}

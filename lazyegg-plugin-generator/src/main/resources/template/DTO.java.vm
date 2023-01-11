@@ -1,0 +1,10 @@
+package ${package}.${moduleName}.dto.data;
+
+import lombok.Data;
+
+import javax.validation.constraints.NotEmpty;
+
+@Data
+public class ${entityClassName}DTO {
+
+}

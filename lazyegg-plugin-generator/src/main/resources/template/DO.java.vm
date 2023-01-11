@@ -1,0 +1,10 @@
+package ${package}.${moduleName}.${entityName};
+
+import lombok.Data;
+import ${package}.component.db.entity.BaseDO;
+
+@Data
+@TableName("${entityName}")
+public class ${entityClassName}DO extends JoinBaseDO{
+
+}

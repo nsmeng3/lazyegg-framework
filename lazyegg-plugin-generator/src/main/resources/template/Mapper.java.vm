@@ -1,0 +1,12 @@
+package ${package}.${moduleName}.${entityName};
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import icu.mhb.mybatisplus.plugln.base.mapper.JoinBaseMapper;
+
+
+@Mapper
+public interface ${entityClassName}Mapper extends JoinBaseMapper<${entityClassName}DO> {
+
+    ${entityClassName}DO getById(String ${entityName}Id);
+}

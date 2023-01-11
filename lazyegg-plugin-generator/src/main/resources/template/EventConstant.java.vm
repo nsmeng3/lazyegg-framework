@@ -1,0 +1,7 @@
+package ${package}.${moduleName}.dto.event;
+
+public class ${entityClassName}EventConstant {
+
+    public static final String CUSTOMER_CREATED_TOPIC = "CRM_CUSTOMER_CREATED_DOMAIN_EVENT_TOPIC";
+
+}

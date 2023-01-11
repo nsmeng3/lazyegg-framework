@@ -1,0 +1,13 @@
+package ${package}.${moduleName}.dto;
+
+import com.alibaba.cola.dto.Query;
+import lombok.Data;
+
+@Data
+public class ${entityClassName}GetQry extends Query {
+    private String id;
+
+    public ${entityClassName}GetQry(String id) {
+        this.id = id;
+    }
+}

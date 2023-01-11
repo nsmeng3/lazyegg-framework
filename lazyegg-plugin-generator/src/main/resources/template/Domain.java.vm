@@ -1,0 +1,14 @@
+package ${package}.${moduleName}.domain.${entityName};
+
+import com.alibaba.cola.domain.Entity;
+import lombok.Data;
+
+//Domain Entity can choose to extend the domain model which is used for DTO
+@Data
+@Entity
+public class ${entityClassName} {
+
+    private String ${entityName}Id;
+
+
+}
