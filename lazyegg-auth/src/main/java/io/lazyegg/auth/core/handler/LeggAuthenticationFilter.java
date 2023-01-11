@@ -1,13 +1,9 @@
 package io.lazyegg.auth.core.handler;
 
 import io.jsonwebtoken.Claims;
-import io.lazyegg.auth.core.exception.InvalidTokenException;
 import io.lazyegg.auth.core.util.JwtUtil;
 import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,7 +26,6 @@ import java.util.HashMap;
  */
 
 public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
-    private static final Logger log = LoggerFactory.getLogger(LeggAuthenticationFilter.class);
 
     public LeggAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
@@ -50,7 +45,6 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
             result.put("code", 498);
             result.put("message", "无效令牌");
             LeggResponsePrintUtil.writeJson(response, result, 498);
-//            throw new InvalidTokenException();
             return;
         }
         SecurityContext context = SecurityContextHolder.createEmptyContext();
@@ -59,14 +53,13 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
         String username = claims.get("username", String.class);
 
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, authorities);
+        UsernamePasswordAuthenticationToken authenticationToken =
+            new UsernamePasswordAuthenticationToken(username, null, authorities);
 
         context.setAuthentication(authenticationToken);
         SecurityContextHolder.setContext(context);
 
         chain.doFilter(request, response);
-
-
     }
 }
 
