@@ -2,16 +2,14 @@ package io.lazyegg.auth.core.handler;
 
 import io.lazyegg.auth.core.util.JwtUtil;
 import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.FilterChain;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,10 +22,9 @@ import java.util.HashMap;
 
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
-    private static final Logger log = LoggerFactory.getLogger(LoginSuccessHandler.class);
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
 
         response.setContentType("application/json; charset=UTF-8");
 
@@ -55,6 +52,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         o.put("data", data);
         response.setHeader("Authorization", "Bearer " + jwt);
         LeggResponsePrintUtil.writeJson(response, o, HttpStatus.OK);
+    }
+
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException {
+        onAuthenticationSuccess(request, response, authentication);
     }
 }
 
