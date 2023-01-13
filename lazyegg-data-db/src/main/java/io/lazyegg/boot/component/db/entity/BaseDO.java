@@ -2,6 +2,7 @@ package io.lazyegg.boot.component.db.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 import java.util.Date;
@@ -25,5 +26,6 @@ public class BaseDO {
     private Date updateTime;
 
     @TableField(fill = FieldFill.INSERT, value = "is_deleted")
+    @TableLogic
     private Boolean deleted;
 }
