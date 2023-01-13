@@ -6,6 +6,7 @@ import com.alibaba.cola.dto.SingleResponse;
 import ${package}.${moduleName}.api.${entityClassName}ServiceI;
 import ${package}.${moduleName}.dto.*;
 import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
+import io.lazyegg.core.page.PageLongResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -86,7 +87,7 @@ public class ${entityClassName}OpenApiAdaptor {
      * @return
      */
     @GetMapping(value = "/${entityName}s", params = {"page", "size"})
-    public ResponseEntity<MultiResponse<${entityClassName}DTO>> page${entityClassName}(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<PageLongResponse<${entityClassName}DTO>> page${entityClassName}(@RequestParam int page, @RequestParam int size) {
         ${entityClassName}PageQry pageQry = new ${entityClassName}PageQry();
         pageQry.setPageIndex(page);
         pageQry.setPageSize(size);

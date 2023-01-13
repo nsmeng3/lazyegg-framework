@@ -6,6 +6,7 @@ import com.alibaba.cola.dto.SingleResponse;
 import io.lazyegg.boot.usermanagement.api.CustomerServiceI;
 import io.lazyegg.boot.usermanagement.dto.*;
 import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
+import io.lazyegg.core.page.PageLongResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -86,7 +87,7 @@ public class CustomerOpenApiAdaptor {
      * @return
      */
     @GetMapping(value = "/customers", params = {"page", "size"})
-    public ResponseEntity<MultiResponse<CustomerDTO>> pageCustomer(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<PageLongResponse<CustomerDTO>> pageCustomer(@RequestParam int page, @RequestParam int size) {
         CustomerPageQry pageQry = new CustomerPageQry();
         pageQry.setPageIndex(page);
         pageQry.setPageSize(size);

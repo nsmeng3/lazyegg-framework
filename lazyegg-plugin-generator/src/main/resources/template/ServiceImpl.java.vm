@@ -9,11 +9,14 @@ import ${package}.${moduleName}.${entityName}.executor.${entityClassName}AddCmdE
 import ${package}.${moduleName}.${entityName}.executor.${entityClassName}DelCmdExe;
 import ${package}.${moduleName}.${entityName}.executor.${entityClassName}UpdateCmdExe;
 import ${package}.${moduleName}.${entityName}.executor.query.*;
+import io.lazyegg.core.page.PageLongResponse;
 import ${package}.${moduleName}.dto.*;
 import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -76,9 +79,16 @@ public class ${entityClassName}ServiceImpl implements ${entityClassName}ServiceI
     }
 
     @Override
-    public MultiResponse<${entityClassName}DTO> page${entityClassName}(${entityClassName}PageQry pageQry) {
-        List<${entityClassName}DTO> execute = ${entityName}PageQryExe.execute(pageQry);
-        return MultiResponse.of(execute);
+    public PageLongResponse<${entityClassName}DTO> page${entityClassName}(${entityClassName}PageQry pageQry) {
+        PageDTO<${entityClassName}DO> page = ${entityName}PageQryExe.execute(pageQry);
+        List<${entityClassName}DO> records = page.getRecords();
+        ArrayList<${entityClassName}DTO> ${entityName}DTOS = new ArrayList<>();
+        for (${entityClassName}DO record : records) {
+            ${entityClassName}DTO e = new ${entityClassName}DTO();
+            BeanUtils.copyProperties(record, e);
+            ${entityName}DTOS.add(e);
+        }
+        return PageLongResponse.of(${entityName}DTOS, page.getTotal(), page.getSize(), page.getCurrent());
     }
 
     @Override

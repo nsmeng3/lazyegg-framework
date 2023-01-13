@@ -9,11 +9,14 @@ import io.lazyegg.boot.usermanagement.customer.executor.CustomerAddCmdExe;
 import io.lazyegg.boot.usermanagement.customer.executor.CustomerDelCmdExe;
 import io.lazyegg.boot.usermanagement.customer.executor.CustomerUpdateCmdExe;
 import io.lazyegg.boot.usermanagement.customer.executor.query.*;
+import io.lazyegg.core.page.PageLongResponse;
 import io.lazyegg.boot.usermanagement.dto.*;
 import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -76,9 +79,16 @@ public class CustomerServiceImpl implements CustomerServiceI {
     }
 
     @Override
-    public MultiResponse<CustomerDTO> pageCustomer(CustomerPageQry pageQry) {
-        List<CustomerDTO> execute = customerPageQryExe.execute(pageQry);
-        return MultiResponse.of(execute);
+    public PageLongResponse<CustomerDTO> pageCustomer(CustomerPageQry pageQry) {
+        PageDTO<CustomerDO> page = customerPageQryExe.execute(pageQry);
+        List<CustomerDO> records = page.getRecords();
+        ArrayList<CustomerDTO> customerDTOS = new ArrayList<>();
+        for (CustomerDO record : records) {
+            CustomerDTO e = new CustomerDTO();
+            BeanUtils.copyProperties(record, e);
+            customerDTOS.add(e);
+        }
+        return PageLongResponse.of(customerDTOS, page.getTotal(), page.getSize(), page.getCurrent());
     }
 
     @Override

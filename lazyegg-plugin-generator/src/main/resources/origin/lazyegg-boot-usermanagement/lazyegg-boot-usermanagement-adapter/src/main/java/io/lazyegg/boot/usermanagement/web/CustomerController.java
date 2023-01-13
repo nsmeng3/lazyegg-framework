@@ -80,7 +80,7 @@ public class CustomerController {
      * @return
      */
     @GetMapping(value = "/customers", params = {"page", "size"})
-    public ResponseEntity<MultiResponse<CustomerDTO>> pageCustomer(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<PageLongResponse<CustomerDTO>> pageCustomer(@RequestParam int page, @RequestParam int size) {
         CustomerPageQry pageQry = new CustomerPageQry();
         pageQry.setPageIndex(page);
         pageQry.setPageSize(size);

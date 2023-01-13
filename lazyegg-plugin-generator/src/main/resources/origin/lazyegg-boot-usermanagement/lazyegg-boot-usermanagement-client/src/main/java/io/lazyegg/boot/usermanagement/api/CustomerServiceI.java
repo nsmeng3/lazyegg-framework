@@ -5,6 +5,7 @@ import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import io.lazyegg.boot.usermanagement.dto.*;
 import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
+import io.lazyegg.core.page.PageLongResponse;
 
 public interface CustomerServiceI {
 
@@ -20,7 +21,7 @@ public interface CustomerServiceI {
 
     MultiResponse<CustomerDTO> listCustomer(CustomerListQry listQry);
 
-    MultiResponse<CustomerDTO> pageCustomer(CustomerPageQry pageQry);
+    PageLongResponse<CustomerDTO> pageCustomer(CustomerPageQry pageQry);
 
     SingleResponse<CustomerDTO> countCustomer(CustomerCountQry countQry);
 }

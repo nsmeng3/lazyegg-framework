@@ -80,7 +80,7 @@ public class ${entityClassName}Controller {
      * @return
      */
     @GetMapping(value = "/${entityName}s", params = {"page", "size"})
-    public ResponseEntity<MultiResponse<${entityClassName}DTO>> page${entityClassName}(@RequestParam int page, @RequestParam int size) {
+    public ResponseEntity<PageLongResponse<${entityClassName}DTO>> page${entityClassName}(@RequestParam int page, @RequestParam int size) {
         ${entityClassName}PageQry pageQry = new ${entityClassName}PageQry();
         pageQry.setPageIndex(page);
         pageQry.setPageSize(size);
