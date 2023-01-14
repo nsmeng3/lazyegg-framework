@@ -1,5 +1,6 @@
 package io.lazyegg.core.exception;
 
+import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import com.alibaba.cola.exception.BizException;
 import com.alibaba.cola.exception.SysException;
@@ -21,20 +22,20 @@ public class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(value = RuntimeException.class)
-    public ResponseEntity<SingleResponse> runtimeException(RuntimeException exception) {
+    public ResponseEntity<Object> runtimeException(RuntimeException exception) {
         log.error(exception.getMessage(), exception);
-        return new ResponseEntity<>(SingleResponse.buildFailure("500", "服务异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(Response.buildFailure("500", "服务异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(value = BizException.class)
-    public ResponseEntity<SingleResponse> bizException(BizException exception) {
-        return new ResponseEntity<>(SingleResponse.buildFailure("500", exception.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<Object> bizException(BizException exception) {
+        return new ResponseEntity<>(Response.buildFailure("500", exception.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(value = SysException.class)
-    public ResponseEntity<SingleResponse> sysException(SysException exception) {
+    public ResponseEntity<Object> sysException(SysException exception) {
         log.error(exception.getMessage(), exception);
-        return new ResponseEntity<>(SingleResponse.buildFailure("500", "系统异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(Response.buildFailure("500", "系统异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
