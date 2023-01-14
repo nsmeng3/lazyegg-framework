@@ -120,7 +120,7 @@ public class PageLongResponse<T> extends Response {
         PageLongResponse<T> response = new PageLongResponse();
         response.setSuccess(true);
         response.setData(pageDTO.getRecords());
-        response.setTotal(0);
+        response.setTotal(pageDTO.getTotal());
         response.setSize(pageDTO.getSize());
         response.setCurrent(pageDTO.getCurrent());
         return response;
