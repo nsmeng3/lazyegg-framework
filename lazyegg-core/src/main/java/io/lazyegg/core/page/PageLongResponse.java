@@ -1,6 +1,7 @@
 package io.lazyegg.core.page;
 
 import com.alibaba.cola.dto.Response;
+import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -112,6 +113,16 @@ public class PageLongResponse<T> extends Response {
         response.setTotal(totalCount);
         response.setSize(pageSize);
         response.setCurrent(pageIndex);
+        return response;
+    }
+
+    public static <T> PageLongResponse<T> of(PageDTO pageDTO) {
+        PageLongResponse<T> response = new PageLongResponse();
+        response.setSuccess(true);
+        response.setData(pageDTO.getRecords());
+        response.setTotal(0);
+        response.setSize(pageDTO.getSize());
+        response.setCurrent(pageDTO.getCurrent());
         return response;
     }
 }
