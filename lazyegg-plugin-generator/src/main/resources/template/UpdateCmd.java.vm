@@ -10,4 +10,5 @@ import lombok.Data;
 @Data
 public class ${entityClassName}UpdateCmd {
 
+    private String id;
 }
