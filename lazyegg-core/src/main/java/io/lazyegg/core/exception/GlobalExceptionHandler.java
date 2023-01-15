@@ -1,7 +1,6 @@
 package io.lazyegg.core.exception;
 
 import com.alibaba.cola.dto.Response;
-import com.alibaba.cola.dto.SingleResponse;
 import com.alibaba.cola.exception.BizException;
 import com.alibaba.cola.exception.SysException;
 import org.slf4j.Logger;
