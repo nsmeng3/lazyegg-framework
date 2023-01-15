@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.lazyegg.auth.core.util.JwtUtil;
 import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,9 +43,9 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
         String token = bearer.replace("Bearer ", "");
         if (!JwtUtil.verifyToken(token)) {
             HashMap<String, Object> result = new HashMap<>();
-            result.put("code", 498);
+            result.put("code", 401);
             result.put("message", "无效令牌");
-            LeggResponsePrintUtil.writeJson(response, result, 498);
+            LeggResponsePrintUtil.writeJson(response, result, HttpStatus.UNAUTHORIZED);
             return;
         }
         SecurityContext context = SecurityContextHolder.createEmptyContext();
