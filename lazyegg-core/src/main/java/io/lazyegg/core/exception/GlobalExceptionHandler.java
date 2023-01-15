@@ -21,19 +21,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(value = RuntimeException.class)
-    public ResponseEntity<Object> runtimeException(RuntimeException exception) {
-        log.error(exception.getMessage(), exception);
-        return new ResponseEntity<>(Response.buildFailure("500", "服务异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
     @ExceptionHandler(value = BizException.class)
     public ResponseEntity<Object> bizException(BizException exception) {
-        return new ResponseEntity<>(Response.buildFailure("500", exception.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(Response.buildFailure("400", exception.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = SysException.class)
-    public ResponseEntity<Object> sysException(SysException exception) {
+    @ExceptionHandler(value = {SysException.class, RuntimeException.class})
+    public ResponseEntity<Object> sysException(Exception exception) {
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(Response.buildFailure("500", "系统异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
