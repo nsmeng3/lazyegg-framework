@@ -10,7 +10,7 @@ public enum LayerType {
     App(new String[]{"CmdExe.java", "QryExe.java", "ServiceImpl.java"}),
     Client(new String[]{"ServiceI.java", "DTO.java", "Event.java", "Constant.java", "Cmd.java", "Qry.java",}),
     Domain(new String[]{"Domain.java", "Gateway.java"}),
-    Infrastructure(new String[]{"Mapper.java", "DO.java", "GatewayImpl.java", "Config.java", "Util.java"}),
+    Infrastructure(new String[]{"Mapper.java", "DO.java", "GatewayImpl.java", "Config.java", "Util.java", "DbService.java", "DbServiceImpl.java"}),
     Generator(new String[]{});
 
     private String[] suffix;
