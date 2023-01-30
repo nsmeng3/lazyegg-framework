@@ -1,6 +1,5 @@
 package io.lazyegg.boot.usermanagement.customer;
 
-import com.alibaba.cola.catchlog.CatchAndLog;
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
@@ -10,6 +9,7 @@ import io.lazyegg.boot.usermanagement.customer.executor.CustomerAddCmdExe;
 import io.lazyegg.boot.usermanagement.customer.executor.CustomerDelCmdExe;
 import io.lazyegg.boot.usermanagement.customer.executor.CustomerUpdateCmdExe;
 import io.lazyegg.boot.usermanagement.customer.executor.query.*;
+import io.lazyegg.core.exception.CatchAndLog;
 import io.lazyegg.core.page.PageLongResponse;
 import io.lazyegg.boot.usermanagement.dto.*;
 import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
