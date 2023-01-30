@@ -6,6 +6,7 @@ import com.alibaba.cola.dto.SingleResponse;
 import io.lazyegg.boot.usermanagement.api.CustomerServiceI;
 import io.lazyegg.boot.usermanagement.dto.*;
 import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
+import io.lazyegg.core.page.PageLongResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
