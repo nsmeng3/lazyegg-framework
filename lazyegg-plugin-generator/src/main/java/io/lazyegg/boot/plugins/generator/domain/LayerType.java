@@ -30,6 +30,9 @@ public enum LayerType {
         if (codeFile.packageName().contains("dto")) {
             return Client;
         }
+        if (codeFile.fileName().endsWith("DbServiceImpl.java")) {
+            return Infrastructure;
+        }
         for (LayerType value : LayerType.values()) {
             String suffix = codeFile.fileName();
             String[] suffixs = value.getSuffix();
