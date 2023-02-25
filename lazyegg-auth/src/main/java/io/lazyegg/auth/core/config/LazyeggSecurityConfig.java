@@ -3,6 +3,7 @@ package io.lazyegg.auth.core.config;
 import io.lazyegg.auth.core.handler.*;
 import io.lazyegg.auth.core.provider.UsernameAndPasswordAuthenticationProvider;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,6 +20,7 @@ import javax.annotation.Resource;
  */
 
 @Configuration
+@ComponentScan(basePackages = "io.lazyegg.auth")
 public class LazyeggSecurityConfig {
     private static final String LOGIN_URL = "/auth/login";
     private static final String LOGOUT_URL = "/auth/logout";
@@ -55,6 +57,7 @@ public class LazyeggSecurityConfig {
             .logout(logout -> logout.logoutSuccessHandler(logoutSuccessHandler).logoutUrl(LOGOUT_URL))
             // 禁用session
             .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            /// 在UsernamePasswordBodyAuthenticationFilter中实现了成功与失败的处理
 //            .formLogin(configurer -> {
 //                configurer.successHandler(successHandler);
 //                configurer.failureHandler(failureHandler);
