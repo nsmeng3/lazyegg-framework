@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,6 +22,7 @@ import javax.annotation.Resource;
 
 @Configuration
 @ComponentScan(basePackages = "io.lazyegg.auth")
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class LazyeggSecurityConfig {
     private static final String LOGIN_URL = "/auth/login";
     private static final String LOGOUT_URL = "/auth/logout";
