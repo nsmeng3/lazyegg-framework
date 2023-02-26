@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -54,6 +55,7 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
         String username = claims.get("username", String.class);
 
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
+        // TODO 设置权限
         UsernamePasswordAuthenticationToken authenticationToken =
             new UsernamePasswordAuthenticationToken(username, null, authorities);
 
