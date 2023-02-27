@@ -1,6 +1,7 @@
 package io.lazyegg.boot.component.db.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import io.lazyegg.core.CurrentUserContextHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
@@ -17,18 +18,16 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        // 可以通过 getFieldValByName()方法判断
-        // Object modifyTime = getFieldValByName("updateTime", metaObject);
-//        log.info("进入创建");
-        // 获取当前用户信息
-//        LoginUser loginUser = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        this.setFieldValByName("creator",loginUser.getUser().getUserName(),metaObject);
-//        this.setFieldValByName("id", "1111" + System.currentTimeMillis(), metaObject);
         this.setFieldValByName("createTime", new Date(), metaObject);
         this.setFieldValByName("updateTime", new Date(), metaObject);
         this.setFieldValByName("enabled", true, metaObject);
         this.setFieldValByName("deleted", false, metaObject);
-//        this.setFieldValByName("updater",loginUser.getUser().getUserName(),metaObject);
+        CurrentUserContextHandler.User user = CurrentUserContextHandler.get();
+        if (user != null) {
+            this.setFieldValByName("createUser", user.getUserId(), metaObject);
+            this.setFieldValByName("createOrg", user.getOrgId(), metaObject);
+        }
+        CurrentUserContextHandler.clean();
     }
 
     @Override

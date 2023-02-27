@@ -15,14 +15,10 @@ import java.util.Date;
 
 
 @Data
-public class BaseDO extends BasePrimaryDO{
-
-    @TableField(fill = FieldFill.INSERT)
-    private Date createTime;
-    @TableField(fill = FieldFill.UPDATE)
-    private Date updateTime;
+public class BaseDO extends BaseNoLogicDeleteDO{
 
     @TableField(fill = FieldFill.INSERT, value = "is_deleted")
     @TableLogic
     private Boolean deleted;
+
 }

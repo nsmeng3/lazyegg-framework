@@ -3,12 +3,17 @@ package io.lazyegg.auth.core.handler;
 import io.jsonwebtoken.Claims;
 import io.lazyegg.auth.core.util.JwtUtil;
 import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
+import io.lazyegg.auth.core.util.SpringUtil;
+import io.lazyegg.core.CurrentUserContextHandler;
+import io.lazyegg.core.UserInfo;
+import io.lazyegg.core.api.UserInfoServiceI;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -28,6 +33,7 @@ import java.util.HashMap;
  */
 
 public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
+    private static final Logger log = LoggerFactory.getLogger(LeggAuthenticationFilter.class);
 
     public LeggAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
@@ -53,7 +59,13 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
 
         Claims claims = JwtUtil.parseJwt(token);
         String username = claims.get("username", String.class);
-
+        UserInfoServiceI userInfoService = SpringUtil.getBean(UserInfoServiceI.class);
+        if (userInfoService != null) {
+            UserInfo userInfo = userInfoService.getUserInfo(username);
+            CurrentUserContextHandler.set(new CurrentUserContextHandler.User(userInfo.getUserId(), userInfo.getOrgId()));
+        } else {
+            log.warn("当前系统未加载用户管理模块");
+        }
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
         // TODO 设置权限
         UsernamePasswordAuthenticationToken authenticationToken =
