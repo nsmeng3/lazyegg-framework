@@ -4,6 +4,9 @@ import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * UserInfo
  *
@@ -17,6 +20,10 @@ public class UserInfo {
     private String userId;
 
     private String orgId;
+
+    private List<String> roles = new ArrayList<>();
+
+    private List<String> permissions = new ArrayList<>();
 
 }
 

@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * JwtAuthenticationFilter
@@ -34,6 +36,8 @@ import java.util.HashMap;
 
 public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
     private static final Logger log = LoggerFactory.getLogger(LeggAuthenticationFilter.class);
+
+    private static final String DEFAULT_ROLE_PREFIX = "ROLE_";
 
     public LeggAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
@@ -59,15 +63,24 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
 
         Claims claims = JwtUtil.parseJwt(token);
         String username = claims.get("username", String.class);
+        ArrayList<GrantedAuthority> authorities = new ArrayList<>();
         UserAcInterface userInfoService = SpringUtil.getBean(UserAcInterface.class);
         if (userInfoService != null) {
             UserInfo userInfo = userInfoService.getUserInfo(username);
             CurrentUserContextHandler.set(new CurrentUserContextHandler.User(userInfo.getUserId(), userInfo.getOrgId()));
+            // 加载角色及权限 TODO 添加缓存
+            List<String> roles = userInfo.getRoles();
+            roles.forEach(role -> {
+                role = DEFAULT_ROLE_PREFIX + role;
+                authorities.add(new SimpleGrantedAuthority(role));
+            });
+            List<String> permissions = userInfo.getPermissions();
+            permissions.forEach(permission -> {
+                authorities.add(new SimpleGrantedAuthority(permission));
+            });
         } else {
-            log.warn("当前系统未加载用户管理模块");
+            log.warn("当前系统未加载用户管理模块(usermanagement)");
         }
-        ArrayList<GrantedAuthority> authorities = new ArrayList<>();
-        // TODO 设置权限
         UsernamePasswordAuthenticationToken authenticationToken =
             new UsernamePasswordAuthenticationToken(username, null, authorities);
 
