@@ -1,6 +1,6 @@
-package io.lazyegg.auth.core.util;
+package io.lazyegg.auth.util;
 
-import io.lazyegg.auth.core.exception.IdentityException;
+import io.lazyegg.auth.exception.IdentityException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

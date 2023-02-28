@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.lazyegg.auth.core.config.LazyeggSecurityConfig
+  io.lazyegg.auth.config.LazyeggSecurityConfig

@@ -1,4 +1,4 @@
-package io.lazyegg.auth.core.util;
+package io.lazyegg.auth.util;
 
 import io.jsonwebtoken.*;
 

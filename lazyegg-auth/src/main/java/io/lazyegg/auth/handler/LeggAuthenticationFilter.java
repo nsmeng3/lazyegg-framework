@@ -1,9 +1,9 @@
-package io.lazyegg.auth.core.handler;
+package io.lazyegg.auth.handler;
 
 import io.jsonwebtoken.Claims;
-import io.lazyegg.auth.core.util.JwtUtil;
-import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
-import io.lazyegg.auth.core.util.SpringUtil;
+import io.lazyegg.auth.util.JwtUtil;
+import io.lazyegg.auth.util.LeggResponsePrintUtil;
+import io.lazyegg.auth.util.SpringUtil;
 import io.lazyegg.core.CurrentUserContextHandler;
 import io.lazyegg.core.UserInfo;
 import io.lazyegg.core.ac.UserAcInterface;

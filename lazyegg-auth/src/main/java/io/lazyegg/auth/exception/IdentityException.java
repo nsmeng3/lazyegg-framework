@@ -1,4 +1,4 @@
-package io.lazyegg.auth.core.exception;
+package io.lazyegg.auth.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

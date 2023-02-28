@@ -1,6 +1,6 @@
-package io.lazyegg.auth.core.handler;
+package io.lazyegg.auth.handler;
 
-import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
+import io.lazyegg.auth.util.LeggResponsePrintUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

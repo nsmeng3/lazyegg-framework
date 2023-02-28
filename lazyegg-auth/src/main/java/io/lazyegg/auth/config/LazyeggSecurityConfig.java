@@ -1,7 +1,7 @@
-package io.lazyegg.auth.core.config;
+package io.lazyegg.auth.config;
 
-import io.lazyegg.auth.core.handler.*;
-import io.lazyegg.auth.core.provider.UsernameAndPasswordAuthenticationProvider;
+import io.lazyegg.auth.handler.*;
+import io.lazyegg.auth.provider.UsernameAndPasswordAuthenticationProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

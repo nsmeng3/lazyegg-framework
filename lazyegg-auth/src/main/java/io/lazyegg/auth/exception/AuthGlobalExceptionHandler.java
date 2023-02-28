@@ -1,4 +1,4 @@
-package io.lazyegg.auth.core.exception;
+package io.lazyegg.auth.exception;
 
 import com.alibaba.cola.dto.Response;
 import org.slf4j.Logger;

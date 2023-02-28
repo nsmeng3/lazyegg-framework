@@ -1,7 +1,7 @@
-package io.lazyegg.auth.core.handler;
+package io.lazyegg.auth.handler;
 
-import io.lazyegg.auth.core.util.JwtUtil;
-import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
+import io.lazyegg.auth.util.JwtUtil;
+import io.lazyegg.auth.util.LeggResponsePrintUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;

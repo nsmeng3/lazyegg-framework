@@ -1,4 +1,4 @@
-package io.lazyegg.auth.core.provider;
+package io.lazyegg.auth.provider;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

@@ -1,9 +1,10 @@
-package io.lazyegg.auth.core.handler;
+package io.lazyegg.auth.handler;
 
-import io.lazyegg.auth.core.util.LeggResponsePrintUtil;
+import io.lazyegg.auth.util.LeggResponsePrintUtil;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

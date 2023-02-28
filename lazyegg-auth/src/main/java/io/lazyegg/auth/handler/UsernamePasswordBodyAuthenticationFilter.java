@@ -1,8 +1,8 @@
-package io.lazyegg.auth.core.handler;
+package io.lazyegg.auth.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import io.lazyegg.auth.core.util.BodyReaderHttpServletRequestWrapper;
-import io.lazyegg.auth.core.util.HttpHelper;
+import io.lazyegg.auth.util.BodyReaderHttpServletRequestWrapper;
+import io.lazyegg.auth.util.HttpHelper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
