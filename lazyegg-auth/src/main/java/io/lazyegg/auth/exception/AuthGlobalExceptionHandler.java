@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -23,6 +24,15 @@ public class AuthGlobalExceptionHandler {
     public ResponseEntity<Object> accessDeniedException(AccessDeniedException exception) {
         log.error("{}", exception.getMessage(), exception);
         return new ResponseEntity<>(Response.buildFailure("403", "访问权限不足，请联系管理员"), HttpStatus.FORBIDDEN);
+    }
+
+    /**
+     * 授权令牌未找到异常
+     */
+    @ExceptionHandler(value = AuthenticationCredentialsNotFoundException.class)
+    public ResponseEntity<Object> authenticationCredentialsNotFoundException(AuthenticationCredentialsNotFoundException exception) {
+        log.error("{}", exception.getMessage(), exception);
+        return new ResponseEntity<>(Response.buildFailure("400", "接口权限存在异常，请联系管理员"), HttpStatus.FORBIDDEN);
     }
 }
 
