@@ -1,14 +1,20 @@
 package io.lazyegg.auth.exception;
 
 import com.alibaba.cola.dto.Response;
+import io.lazyegg.auth.util.LeggUserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.Collection;
 
 /**
  * AuthGlobalExceptionHandler
@@ -22,8 +28,12 @@ public class AuthGlobalExceptionHandler {
 
     @ExceptionHandler(value = AccessDeniedException.class)
     public ResponseEntity<Object> accessDeniedException(AccessDeniedException exception) {
-        log.error("{}", exception.getMessage(), exception);
-        return new ResponseEntity<>(Response.buildFailure("403", "访问权限不足，请联系管理员"), HttpStatus.FORBIDDEN);
+        String currentUsername = LeggUserUtil.getCurrentUsername();
+        Authentication authentication = LeggUserUtil.getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+        log.error("{} - {} - {}", currentUsername, authorities, exception.getMessage());
+        return new ResponseEntity<>(Response.buildFailure("403", "权限不足，请联系管理员"), HttpStatus.FORBIDDEN);
     }
 
     /**

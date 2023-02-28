@@ -21,6 +21,7 @@ public class LeggUserUtil {
     public static String getCurrentUsername() {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
+        authentication.getAuthorities();
         String username;
         try {
             username = String.valueOf(authentication.getPrincipal());
@@ -31,6 +32,11 @@ public class LeggUserUtil {
             throw new IdentityException();
         }
         return username;
+    }
+
+    public static Authentication getAuthentication() {
+        SecurityContext context = SecurityContextHolder.getContext();
+        return context.getAuthentication();
     }
 }
 

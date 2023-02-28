@@ -1,6 +1,7 @@
 package io.lazyegg.auth.web;
 
 import com.alibaba.cola.dto.SingleResponse;
+import io.lazyegg.core.annotation.LeggAnno;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +24,10 @@ public class TwoStepCodeController {
 
     /**
      * TODO 作用未知
-     * 
+     *
      * @return
      */
+    @LeggAnno
     @PostMapping("/2step-code")
     public SingleResponse twoStepCode() {
         HashMap data = new HashMap();
