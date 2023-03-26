@@ -66,8 +66,7 @@ public class DruidDataSourceFactory extends DataSourceFactory implements DataSou
             druidDataSource.setFilters(properties.getFilters());
             druidDataSource.init();
         } catch (Exception e) {
-            log.error("druid数据源初始化失败");
-            e.printStackTrace();
+            log.error("druid数据源初始化失败", e);
         }
         return druidDataSource;
     }

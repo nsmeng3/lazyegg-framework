@@ -22,6 +22,7 @@ public class DefaultDBFieldHandler implements MetaObjectHandler {
         this.setFieldValByName("updateTime", new Date(), metaObject);
         this.setFieldValByName("enabled", true, metaObject);
         this.setFieldValByName("deleted", false, metaObject);
+        this.setFieldValByName("locked", false, metaObject);
         CurrentUserContextHandler.User user = CurrentUserContextHandler.get();
         if (user != null) {
             this.setFieldValByName("createUser", user.getUserId(), metaObject);
