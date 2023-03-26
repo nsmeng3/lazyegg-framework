@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.${entityName};
+package ${package}.${moduleName}.${entityNameLowercase};
 
 import icu.mhb.mybatisplus.plugln.base.service.impl.JoinServiceImpl;
 import org.springframework.stereotype.Service;

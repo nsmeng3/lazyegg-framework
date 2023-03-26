@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.domain.${entityName};
+package ${package}.${moduleName}.domain.${entityNameLowercase};
 
 import com.alibaba.cola.domain.Entity;
 import lombok.Data;

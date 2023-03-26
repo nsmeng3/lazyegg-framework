@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.${entityName}.executor;
+package ${package}.${moduleName}.${entityNameLowercase}.executor;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import ${package}.${moduleName}.dto.${entityClassName}UpdateCmd;

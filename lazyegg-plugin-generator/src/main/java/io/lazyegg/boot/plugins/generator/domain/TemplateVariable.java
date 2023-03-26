@@ -27,6 +27,8 @@ public class TemplateVariable {
 
     @NonNull
     private String entityName;
+    @NonNull
+    private String entityNameLowercase;
 
     private String entityClassName;
 
@@ -50,6 +52,7 @@ public class TemplateVariable {
             throw new RuntimeException("entityName length must be greater than 1" );
         }
         this.entityName = initialLowerCase(entityName);
+        this.entityNameLowercase = entityName.toLowerCase();
         this.entityClassName = initialUpperCase(this.entityName);
 
     }
@@ -70,6 +73,7 @@ public class TemplateVariable {
         velocityContext.put("package", this.packagePrefix);
         velocityContext.put("moduleName", this.moduleName);
         velocityContext.put("entityName", this.entityName);
+        velocityContext.put("entityNameLowercase", this.entityNameLowercase);
         velocityContext.put("entityClassName", this.entityClassName);
     }
 

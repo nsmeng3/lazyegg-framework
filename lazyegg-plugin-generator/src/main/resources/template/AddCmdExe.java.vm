@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.${entityName}.executor;
+package ${package}.${moduleName}.${entityNameLowercase}.executor;
 
 import com.alibaba.cola.dto.SingleResponse;
 import ${package}.${moduleName}.dto.${entityClassName}AddCmd;

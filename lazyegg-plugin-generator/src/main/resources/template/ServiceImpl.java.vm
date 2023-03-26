@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.${entityName};
+package ${package}.${moduleName}.${entityNameLowercase};
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;

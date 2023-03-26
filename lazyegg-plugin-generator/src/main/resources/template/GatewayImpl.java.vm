@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.${entityName};
+package ${package}.${moduleName}.${entityNameLowercase};
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;

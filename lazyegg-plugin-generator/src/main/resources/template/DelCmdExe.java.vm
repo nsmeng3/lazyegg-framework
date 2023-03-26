@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.${entityName}.executor;
+package ${package}.${moduleName}.${entityNameLowercase}.executor;
 
 import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
 import ${package}.${moduleName}.dto.${entityClassName}DelCmd;
