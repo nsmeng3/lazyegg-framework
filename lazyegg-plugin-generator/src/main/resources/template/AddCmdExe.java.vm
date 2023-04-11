@@ -3,8 +3,8 @@ package ${package}.${moduleName}.${entityNameLowercase}.executor;
 import com.alibaba.cola.dto.SingleResponse;
 import ${package}.${moduleName}.dto.${entityClassName}AddCmd;
 import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
-import ${package}.${moduleName}.${entityName}.${entityClassName}DO;
-import ${package}.${moduleName}.${entityName}.${entityClassName}DbService;
+import ${package}.${moduleName}.${entityNameLowercase}.${entityClassName}DO;
+import ${package}.${moduleName}.${entityNameLowercase}.${entityClassName}DbService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 

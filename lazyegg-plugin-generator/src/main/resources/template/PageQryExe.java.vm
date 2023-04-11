@@ -3,8 +3,8 @@ package ${package}.${moduleName}.${entityNameLowercase}.executor.query;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
 import ${package}.${moduleName}.dto.${entityClassName}PageQry;
-import ${package}.${moduleName}.${entityName}.${entityClassName}DO;
-import ${package}.${moduleName}.${entityName}.${entityClassName}DbService;
+import ${package}.${moduleName}.${entityNameLowercase}.${entityClassName}DO;
+import ${package}.${moduleName}.${entityNameLowercase}.${entityClassName}DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

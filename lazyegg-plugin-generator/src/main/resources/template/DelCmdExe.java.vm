@@ -1,6 +1,6 @@
 package ${package}.${moduleName}.${entityNameLowercase}.executor;
 
-import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
+import ${package}.${moduleName}.domain.${entityNameLowercase}.gateway.${entityClassName}Gateway;
 import ${package}.${moduleName}.dto.${entityClassName}DelCmd;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

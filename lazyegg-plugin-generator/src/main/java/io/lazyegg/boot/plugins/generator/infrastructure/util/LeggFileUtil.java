@@ -64,7 +64,7 @@ public class LeggFileUtil {
                 for (Map.Entry<String, String> replaceEntry : replaceMap.entrySet()) {
                     String oldString = replaceEntry.getKey();
                     String newString = replaceEntry.getValue();
-                    if (s.startsWith("package ")) {
+                    if (s.startsWith("package ") || s.startsWith("import ")) {
                         s= s.replace("customer", "${entityNameLowercase}");
                     }
                     if (s.contains(oldString)) {

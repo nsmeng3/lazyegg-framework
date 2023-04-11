@@ -2,8 +2,8 @@ package ${package}.${moduleName}.${entityNameLowercase}.executor;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import ${package}.${moduleName}.dto.${entityClassName}UpdateCmd;
-import ${package}.${moduleName}.${entityName}.${entityClassName}DO;
-import ${package}.${moduleName}.${entityName}.${entityClassName}DbService;
+import ${package}.${moduleName}.${entityNameLowercase}.${entityClassName}DO;
+import ${package}.${moduleName}.${entityNameLowercase}.${entityClassName}DbService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

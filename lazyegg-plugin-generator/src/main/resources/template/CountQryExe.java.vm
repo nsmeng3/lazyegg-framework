@@ -1,7 +1,7 @@
 package ${package}.${moduleName}.${entityNameLowercase}.executor.query;
 
 import com.alibaba.cola.dto.SingleResponse;
-import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
+import ${package}.${moduleName}.domain.${entityNameLowercase}.gateway.${entityClassName}Gateway;
 import ${package}.${moduleName}.dto.${entityClassName}CountQry;
 import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
 import lombok.Data;

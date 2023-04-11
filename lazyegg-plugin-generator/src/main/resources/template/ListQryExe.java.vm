@@ -1,7 +1,7 @@
 package ${package}.${moduleName}.${entityNameLowercase}.executor.query;
 
 import com.alibaba.cola.dto.MultiResponse;
-import ${package}.${moduleName}.domain.${entityName}.gateway.${entityClassName}Gateway;
+import ${package}.${moduleName}.domain.${entityNameLowercase}.gateway.${entityClassName}Gateway;
 import ${package}.${moduleName}.dto.${entityClassName}ListQry;
 import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
 import org.springframework.beans.factory.annotation.Autowired;

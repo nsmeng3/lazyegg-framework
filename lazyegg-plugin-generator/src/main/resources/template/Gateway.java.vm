@@ -1,6 +1,6 @@
 package ${package}.${moduleName}.domain.${entityNameLowercase}.gateway;
 
-import ${package}.${moduleName}.domain.${entityName}.${entityClassName};
+import ${package}.${moduleName}.domain.${entityNameLowercase}.${entityClassName};
 import ${package}.${moduleName}.dto.${entityClassName}DelCmd;
 import ${package}.${moduleName}.dto.${entityClassName}UpdateCmd;
 

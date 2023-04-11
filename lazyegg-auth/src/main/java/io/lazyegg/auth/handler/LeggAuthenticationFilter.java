@@ -6,7 +6,7 @@ import io.lazyegg.auth.util.LeggResponsePrintUtil;
 import io.lazyegg.auth.util.SpringUtil;
 import io.lazyegg.core.CurrentUserContextHandler;
 import io.lazyegg.core.UserInfo;
-import io.lazyegg.core.ac.UserAcInterface;
+import io.lazyegg.core.ac.UserAccInterface;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +64,7 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
         Claims claims = JwtUtil.parseJwt(token);
         String username = claims.get("username", String.class);
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
-        UserAcInterface userInfoService = SpringUtil.getBean(UserAcInterface.class);
+        UserAccInterface userInfoService = SpringUtil.getBean(UserAccInterface.class);
         if (userInfoService != null) {
             UserInfo userInfo = userInfoService.getUserInfo(username);
             CurrentUserContextHandler.set(new CurrentUserContextHandler.User(userInfo.getUserId(), userInfo.getOrgId()));
