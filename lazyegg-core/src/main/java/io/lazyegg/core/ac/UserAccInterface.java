@@ -8,7 +8,7 @@ import io.lazyegg.core.UserInfo;
  *
  * @author DifferentW  nsmeng3@163.com 2023/2/27 23:23
  */
-public interface UserAcInterface {
+public interface UserAccInterface {
 
     UserInfo getUserInfo(String username);
 }
