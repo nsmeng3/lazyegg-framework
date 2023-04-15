@@ -20,4 +20,3 @@ public class MyBatisPlusJoinConfig extends JoinDefaultSqlInjector {
         return super.getMethodList(mapperClass, tableInfo);
     }
 }
-
