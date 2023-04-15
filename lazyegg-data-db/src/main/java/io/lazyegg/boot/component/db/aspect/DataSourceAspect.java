@@ -50,13 +50,15 @@ public class DataSourceAspect {
 
     private DataSource getDataSource(ProceedingJoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Class<?> targetClass = joinPoint.getTarget().getClass();
-        DataSource annotation = targetClass.getAnnotation(DataSource.class);
+        DataSource annotation = null;
+        Method method = methodSignature.getMethod();
+        annotation = method.getAnnotation(DataSource.class);
+
         if (annotation != null) {
             return annotation;
         } else {
-            Method method = methodSignature.getMethod();
-            return method.getAnnotation(DataSource.class);
+            Class<?> targetClass = joinPoint.getTarget().getClass();
+            return targetClass.getAnnotation(DataSource.class);
         }
     }
 }
