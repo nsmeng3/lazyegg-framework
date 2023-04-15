@@ -8,8 +8,9 @@ import java.lang.annotation.*;
  * @author DifferentW  nsmeng3@163.com
  */
 @Documented
+@Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target(value = {ElementType.ANNOTATION_TYPE, ElementType.METHOD})
+@Target(value = {ElementType.TYPE, ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 public @interface DataSource {
     String value() default "";
 }
