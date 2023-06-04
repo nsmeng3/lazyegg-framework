@@ -1,7 +1,7 @@
 package io.lazyegg.auth.web;
 
 import com.alibaba.cola.dto.SingleResponse;
-import io.lazyegg.core.annotation.LeggAnno;
+import io.lazyegg.core.annotation.UrlIgnore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -29,20 +29,12 @@ public class TwoStepCodeController {
      *
      * @return
      */
-    @LeggAnno
-    @PostMapping("/2step-code")
+    @UrlIgnore
+    @RequestMapping("/2step-code")
     public SingleResponse twoStepCode() {
-        if (true) {
-            throw new RuntimeException("sdfsdff");
-        }
         HashMap data = new HashMap();
         data.put("stepCode", "1");
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-        Object credentials = authentication.getCredentials();
-        data.put("principal", principal);
-        data.put("credentials", credentials);
+
         return SingleResponse.of(data);
     }
-
 }
