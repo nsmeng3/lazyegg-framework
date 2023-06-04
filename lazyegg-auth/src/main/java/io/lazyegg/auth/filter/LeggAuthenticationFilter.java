@@ -7,7 +7,6 @@ import io.lazyegg.auth.util.SpringUtil;
 import io.lazyegg.core.CurrentUserContextHandler;
 import io.lazyegg.core.UserInfo;
 import io.lazyegg.core.ac.UserAccInterface;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,7 +83,7 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
             log.warn("当前系统未加载用户管理模块(usermanagement)");
         }
         UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken(username, null, authorities);
+                new UsernamePasswordAuthenticationToken(username, null, authorities);
 
         context.setAuthentication(authenticationToken);
         SecurityContextHolder.setContext(context);

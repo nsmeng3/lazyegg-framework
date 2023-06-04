@@ -1,6 +1,9 @@
 package io.lazyegg.auth.util;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.util.Date;
 import java.util.Map;
@@ -30,14 +33,14 @@ public abstract class JwtUtil {
         Date now = new Date(nowMillis);
         //创建一个JwtBuilder，设置jwt的body
         JwtBuilder builder = Jwts.builder()
-            //保存在Payload（有效载荷）中的内容
-            .setClaims(claims)
-            //iat: jwt的签发时间
-            .setIssuedAt(now)
-            //设置过期时间
-            .setExpiration(exp)
-            //设置签名使用的签名算法和签名使用的秘钥
-            .signWith(signatureAlgorithm, SIGNING_KEY);
+                //保存在Payload（有效载荷）中的内容
+                .setClaims(claims)
+                //iat: jwt的签发时间
+                .setIssuedAt(now)
+                //设置过期时间
+                .setExpiration(exp)
+                //设置签名使用的签名算法和签名使用的秘钥
+                .signWith(signatureAlgorithm, SIGNING_KEY);
         return builder.compact();
     }
 
@@ -50,10 +53,10 @@ public abstract class JwtUtil {
     public static Claims parseJwt(String token) {
         //得到DefaultJwtParser
         Claims claims = Jwts.parser()
-            //设置签名的秘钥
-            .setSigningKey(SIGNING_KEY)
-            //设置需要解析的token
-            .parseClaimsJws(token).getBody();
+                //设置签名的秘钥
+                .setSigningKey(SIGNING_KEY)
+                //设置需要解析的token
+                .parseClaimsJws(token).getBody();
         return claims;
     }
 
@@ -66,10 +69,10 @@ public abstract class JwtUtil {
     public static boolean verifyToken(String token) {
         try {
             Jwts.parser()
-                //设置签名的秘钥
-                .setSigningKey(SIGNING_KEY)
-                //设置需要解析的token
-                .parseClaimsJws(token);
+                    //设置签名的秘钥
+                    .setSigningKey(SIGNING_KEY)
+                    //设置需要解析的token
+                    .parseClaimsJws(token);
         } catch (Exception e) {
             return false;
         }

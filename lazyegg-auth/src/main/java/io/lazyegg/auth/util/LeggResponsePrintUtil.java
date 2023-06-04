@@ -36,8 +36,9 @@ public abstract class LeggResponsePrintUtil {
     }
 
     public static void writeJson(HttpServletResponse response, Map<String, Object> result, HttpStatus statusCode) throws IOException {
-       writeJson(response, result, statusCode.value());
+        writeJson(response, result, statusCode.value());
     }
+
     public static void writeJson(HttpServletResponse response, Map<String, Object> result, int statusCode) throws IOException {
         response.setContentType("application/json; charset=UTF-8");
         response.setStatus(statusCode);
@@ -52,4 +53,3 @@ public abstract class LeggResponsePrintUtil {
         outputStream.close();
     }
 }
-

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.*;
 import java.util.Date;
 
 /**
