@@ -12,5 +12,5 @@
 
 ## UserService
 
-> 用于获取用户信息
+> 用于获取本地用户信息
 > 实现：loadUserByUsername
