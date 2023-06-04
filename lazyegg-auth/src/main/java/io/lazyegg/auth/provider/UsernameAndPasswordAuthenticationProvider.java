@@ -1,5 +1,7 @@
 package io.lazyegg.auth.provider;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,24 +12,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-
 /**
  * 登录处理
  *
  * @author DifferentW  nsmeng3@163.com
  */
+@Slf4j
 @Component
 public class UsernameAndPasswordAuthenticationProvider implements AuthenticationProvider {
 
-    @Resource
+    @Autowired(required = false)
     private UserDetailsService userDetailsService;
 
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
+        log.info("UsernameAndPasswordAuthenticationProvider.authenticate");
         String principal = String.valueOf(authentication.getPrincipal());
         String credentials = String.valueOf(authentication.getCredentials());
         UserDetails userDetails = userDetailsService.loadUserByUsername(principal);
@@ -41,7 +43,6 @@ public class UsernameAndPasswordAuthenticationProvider implements Authentication
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return true;
+        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
     }
 }
-

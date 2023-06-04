@@ -1,6 +1,8 @@
-package io.lazyegg.auth.handler;
+package io.lazyegg.auth.filter;
 
 import com.alibaba.fastjson.JSONObject;
+import io.lazyegg.auth.handler.LoginFailureHandler;
+import io.lazyegg.auth.handler.LoginSuccessHandler;
 import io.lazyegg.auth.util.BodyReaderHttpServletRequestWrapper;
 import io.lazyegg.auth.util.HttpHelper;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,6 +39,7 @@ public class UsernamePasswordBodyAuthenticationFilter extends UsernamePasswordAu
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        logger.info("UsernamePasswordBodyAuthenticationFilter");
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String reqMethod = httpServletRequest.getMethod();
         if ((!"GET".equals(reqMethod)) && (!"DELETE".equals(reqMethod))) {
@@ -63,9 +66,7 @@ public class UsernamePasswordBodyAuthenticationFilter extends UsernamePasswordAu
     }
 
     private static String getBody(HttpServletRequest request) {
-
-        String body = HttpHelper.getBodyString(request);
-        return body;
+        return HttpHelper.getBodyString(request);
     }
 
     @Override

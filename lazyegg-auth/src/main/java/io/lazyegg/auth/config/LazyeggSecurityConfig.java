@@ -1,8 +1,12 @@
 package io.lazyegg.auth.config;
 
 import com.alibaba.cola.exception.SysException;
-import io.lazyegg.auth.handler.*;
-import io.lazyegg.auth.provider.UsernameAndPasswordAuthenticationProvider;
+import io.lazyegg.auth.AuthenticationFactory;
+import io.lazyegg.auth.UserDetailsServiceImpl;
+import io.lazyegg.auth.filter.GlobalExceptionHandlerFilter;
+import io.lazyegg.auth.filter.JwtAuthenticationFilter;
+import io.lazyegg.auth.handler.JwtAuthenticationEntryPoint;
+import io.lazyegg.auth.handler.JwtLogoutSuccessHandler;
 import io.lazyegg.auth.util.SpringUtil;
 import io.lazyegg.core.annotation.LeggAnno;
 import org.slf4j.Logger;
@@ -11,13 +15,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.session.DisableEncodeUrlFilter;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
@@ -42,14 +50,15 @@ public class LazyeggSecurityConfig {
     private static final String LOGIN_URL = "/auth/login";
     private static final String LOGOUT_URL = "/auth/logout";
     private static final String[] URL_WHITELIST = {
-        "/a/**",
-        LOGIN_URL,
-        LOGOUT_URL,
-        "/auth/logout",
-        "/doc.html",
-        "/webjars/**",
-        "/swagger-resources",
-        "/v2/**",
+            "/a/**",
+            LOGIN_URL,
+            LOGOUT_URL,
+            "/auth/logout",
+            "/doc.html",
+            "/webjars/**",
+            "/swagger-resources",
+            "/v2/**",
+            "/login"
 
     };
 
@@ -57,9 +66,10 @@ public class LazyeggSecurityConfig {
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     @Resource
     private JwtLogoutSuccessHandler logoutSuccessHandler;
-    @Resource
-    private UsernameAndPasswordAuthenticationProvider usernameAndPasswordAuthenticationProvider;
 
+    /**
+     * @return
+     */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> {
@@ -122,50 +132,54 @@ public class LazyeggSecurityConfig {
         };
     }
 
+    /**
+     * 配置安全过滤器链
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        ProviderManager authenticationManager = new ProviderManager(usernameAndPasswordAuthenticationProvider);
         http
-            .cors()
-            .and()
-            .csrf().disable()
-            .logout(logout -> logout.logoutSuccessHandler(logoutSuccessHandler).logoutUrl(LOGOUT_URL))
-            // 禁用session
-            .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            /// 在UsernamePasswordBodyAuthenticationFilter中实现了成功与失败的处理
-//            .formLogin(configurer -> {
-//                configurer.successHandler(successHandler);
-//                configurer.failureHandler(failureHandler);
-//                configurer.loginProcessingUrl(LOGIN_URL);
-//            })
-            .authorizeHttpRequests(authorizeHttpRequests -> {
-                authorizeHttpRequests.mvcMatchers(URL_WHITELIST).permitAll();
-                authorizeHttpRequests.anyRequest().authenticated();
-            })
-            // 异常处理
-            .exceptionHandling(
-                httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
-                    .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-            )
-            // 认证管理
-//            .authenticationManager(authenticationManager)
-            // 过滤器
-            .addFilterBefore(usernamePasswordBodyAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-            .addFilter(jwtAuthenticationFilter())
+                .cors()
+                .and()
+                .csrf().disable()
+                .logout(logout -> logout.logoutSuccessHandler(logoutSuccessHandler)
+                        .logoutUrl(LOGOUT_URL))
+                // 禁用session
+                .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+                .authorizeHttpRequests(authorizeHttpRequests -> {
+                    authorizeHttpRequests.mvcMatchers(URL_WHITELIST).permitAll();
+                    authorizeHttpRequests.anyRequest().authenticated();
+                })
+                .authenticationManager(authenticationManager())
+                // 异常处理
+                .exceptionHandling()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .and()
+//                 过滤器
+                .addFilterBefore(new GlobalExceptionHandlerFilter(), DisableEncodeUrlFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+
         ;
         return http.build();
     }
 
     @Bean
-    LeggAuthenticationFilter jwtAuthenticationFilter() {
-        return new LeggAuthenticationFilter(authentication -> null);
+    AuthenticationManager authenticationManager() {
+        Map<String, AuthenticationProvider> authenticationProviderNames = AuthenticationFactory.getAuthenticationProvider();
+        return new ProviderManager(authenticationProviderNames.values().toArray(new AuthenticationProvider[0]));
     }
 
     @Bean
-    UsernamePasswordBodyAuthenticationFilter usernamePasswordBodyAuthenticationFilter() {
-        ProviderManager providerManager = new ProviderManager(usernameAndPasswordAuthenticationProvider);
-        return new UsernamePasswordBodyAuthenticationFilter(LOGIN_URL, providerManager);
+    UserDetailsService userDetailsService() {
+        return new UserDetailsServiceImpl();
     }
 
-
+    @Bean
+    JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
+    }
 }

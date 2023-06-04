@@ -62,7 +62,7 @@ public class PageLongResponse<T> extends Response {
         if (null == this.data) {
             return Collections.emptyList();
         } else {
-            return (List)(this.data instanceof List ? (List)this.data : new ArrayList(this.data));
+            return this.data instanceof List ? (List)this.data : new ArrayList(this.data);
         }
     }
 
@@ -126,4 +126,3 @@ public class PageLongResponse<T> extends Response {
         return response;
     }
 }
-

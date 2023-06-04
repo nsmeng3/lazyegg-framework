@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * 认证入口
+ * 认证失败处理
  *
  * @author DifferentW  nsmeng3@163.com
  */
@@ -33,4 +33,3 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         LeggResponsePrintUtil.writeJson(response, o, HttpStatus.UNAUTHORIZED);
     }
 }
-

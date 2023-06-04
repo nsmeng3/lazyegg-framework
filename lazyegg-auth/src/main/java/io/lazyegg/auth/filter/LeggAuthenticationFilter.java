@@ -1,4 +1,4 @@
-package io.lazyegg.auth.handler;
+package io.lazyegg.auth.filter;
 
 import io.jsonwebtoken.Claims;
 import io.lazyegg.auth.util.JwtUtil;
@@ -7,6 +7,7 @@ import io.lazyegg.auth.util.SpringUtil;
 import io.lazyegg.core.CurrentUserContextHandler;
 import io.lazyegg.core.UserInfo;
 import io.lazyegg.core.ac.UserAccInterface;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +46,7 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        log.info("LeggAuthenticationFilter");
         String bearer = request.getHeader("Authorization");
 
         if (StringUtils.isBlank(bearer)) {
@@ -90,4 +92,3 @@ public class LeggAuthenticationFilter extends BasicAuthenticationFilter {
         chain.doFilter(request, response);
     }
 }
-
