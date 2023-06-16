@@ -1,9 +1,10 @@
-package io.lazyegg.boot.usermanagement.customer.executor;
+package io.lazyegg.boot.customermanage.customer.executor;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import io.lazyegg.boot.usermanagement.dto.CustomerUpdateCmd;
-import io.lazyegg.boot.usermanagement.customer.CustomerDO;
-import io.lazyegg.boot.usermanagement.customer.CustomerDbService;
+import io.lazyegg.boot.customermanage.dto.CustomerUpdateCmd;
+import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.customermanage.customer.CustomerDO;
+import io.lazyegg.boot.customermanage.customer.CustomerDbService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -24,12 +25,14 @@ public class CustomerUpdateCmdExe {
     @Resource
     private CustomerDbService customerDbService;
 
-    public void execute(CustomerUpdateCmd cmd) {
+    public CustomerDTO execute(CustomerUpdateCmd cmd) {
         CustomerDO customerDO = new CustomerDO();
         BeanUtils.copyProperties(cmd, customerDO);
         LambdaUpdateWrapper<CustomerDO> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(CustomerDO::getId, cmd.getId());
         customerDbService.update(customerDO, updateWrapper);
+        CustomerDTO customerDTO = new CustomerDTO();
+        BeanUtils.copyProperties(customerDO, customerDTO);
+        return customerDTO;
     }
 }
-

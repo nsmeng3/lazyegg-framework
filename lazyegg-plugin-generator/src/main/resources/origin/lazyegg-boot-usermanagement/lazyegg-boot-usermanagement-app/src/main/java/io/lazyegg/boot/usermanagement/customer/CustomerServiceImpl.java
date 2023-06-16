@@ -1,18 +1,18 @@
-package io.lazyegg.boot.usermanagement.customer;
+package io.lazyegg.boot.customermanage.customer;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
-import io.lazyegg.boot.usermanagement.api.CustomerServiceI;
-import io.lazyegg.boot.usermanagement.customer.executor.CustomerAddCmdExe;
-import io.lazyegg.boot.usermanagement.customer.executor.CustomerDelCmdExe;
-import io.lazyegg.boot.usermanagement.customer.executor.CustomerUpdateCmdExe;
-import io.lazyegg.boot.usermanagement.customer.executor.query.*;
+import io.lazyegg.boot.customermanage.api.CustomerServiceI;
+import io.lazyegg.boot.customermanage.dto.*;
+import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.customermanage.customer.executor.CustomerAddCmdExe;
+import io.lazyegg.boot.customermanage.customer.executor.CustomerDelCmdExe;
+import io.lazyegg.boot.customermanage.customer.executor.CustomerUpdateCmdExe;
+import io.lazyegg.boot.customermanage.customer.executor.query.*;
 import io.lazyegg.core.exception.CatchAndLog;
 import io.lazyegg.core.page.PageLongResponse;
-import io.lazyegg.boot.usermanagement.dto.*;
-import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -38,21 +38,10 @@ public class CustomerServiceImpl implements CustomerServiceI {
     private CustomerListQryExe customerListQryExe;
     @Resource
     private CustomerPageQryExe customerPageQryExe;
-    @Resource
-    private CustomerCountQryExe customerCountQryExe;
-
-    @Resource
-    private CustomerListByNameQryExe customerListByNameQryExe;
 
     public Response addCustomer(CustomerAddCmd customerAddCmd) {
         customerAddCmdExe.execute(customerAddCmd);
         return Response.buildSuccess();
-    }
-
-    @Override
-    public MultiResponse<CustomerDTO> listByName(CustomerListByNameQry customerListByNameQry) {
-        List<CustomerDTO> execute = customerListByNameQryExe.execute(customerListByNameQry);
-        return MultiResponse.of(execute);
     }
 
     @Override
@@ -63,8 +52,8 @@ public class CustomerServiceImpl implements CustomerServiceI {
 
     @Override
     public Response updateCustomer(CustomerUpdateCmd cmd) {
-        customerUpdateCmdExe.execute(cmd);
-        return Response.buildSuccess();
+        CustomerDTO customerDTO = customerUpdateCmdExe.execute(cmd);
+        return SingleResponse.of(customerDTO);
     }
 
     @Override
@@ -91,12 +80,5 @@ public class CustomerServiceImpl implements CustomerServiceI {
         }
         return PageLongResponse.of(customerDTOS, page.getTotal(), page.getSize(), page.getCurrent());
     }
-
-    @Override
-    public SingleResponse<CustomerDTO> countCustomer(CustomerCountQry countQry) {
-        CustomerDTO execute = customerCountQryExe.execute(countQry);
-        return SingleResponse.of(execute);
-    }
-
 
 }

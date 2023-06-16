@@ -1,17 +1,15 @@
-package io.lazyegg.boot.usermanagement.api;
+package io.lazyegg.boot.customermanage.api;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
-import io.lazyegg.boot.usermanagement.dto.*;
-import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
+import io.lazyegg.boot.customermanage.dto.*;
+import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
 import io.lazyegg.core.page.PageLongResponse;
 
 public interface CustomerServiceI {
 
     Response addCustomer(CustomerAddCmd cmd);
-
-    MultiResponse<CustomerDTO> listByName(CustomerListByNameQry qry);
 
     Response removeCustomer(CustomerDelCmd cmd);
 
@@ -23,5 +21,4 @@ public interface CustomerServiceI {
 
     PageLongResponse<CustomerDTO> pageCustomer(CustomerPageQry pageQry);
 
-    SingleResponse<CustomerDTO> countCustomer(CustomerCountQry countQry);
 }

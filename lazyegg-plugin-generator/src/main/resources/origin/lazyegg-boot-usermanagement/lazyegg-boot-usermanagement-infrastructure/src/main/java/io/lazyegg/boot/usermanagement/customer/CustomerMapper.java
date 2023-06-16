@@ -1,12 +1,10 @@
-package io.lazyegg.boot.usermanagement.customer;
+package io.lazyegg.boot.customermanage.customer;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
 import icu.mhb.mybatisplus.plugln.base.mapper.JoinBaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 
 @Mapper
 public interface CustomerMapper extends JoinBaseMapper<CustomerDO> {
 
-    CustomerDO getById(String customerId);
 }

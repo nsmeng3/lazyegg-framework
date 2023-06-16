@@ -1,9 +1,0 @@
-package ${package}.${moduleName}.dto;
-
-import ${package}.${moduleName}.dto.data.${entityClassName}DTO;
-import lombok.Data;
-
-@Data
-public class ${entityClassName}AddCmd {
-
-}

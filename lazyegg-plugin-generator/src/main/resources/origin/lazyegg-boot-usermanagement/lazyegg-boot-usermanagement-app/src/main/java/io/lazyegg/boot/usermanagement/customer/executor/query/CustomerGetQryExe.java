@@ -1,23 +1,26 @@
-package io.lazyegg.boot.usermanagement.customer.executor.query;
+package io.lazyegg.boot.customermanage.customer.executor.query;
 
-import com.alibaba.cola.dto.SingleResponse;
-import io.lazyegg.boot.usermanagement.domain.customer.Customer;
-import io.lazyegg.boot.usermanagement.domain.customer.gateway.CustomerGateway;
-import io.lazyegg.boot.usermanagement.dto.CustomerGetQry;
-import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
+import io.lazyegg.boot.customermanage.dto.CustomerGetQry;
+import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.customermanage.customer.CustomerDO;
+import io.lazyegg.boot.customermanage.customer.CustomerDbService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 @Component
 public class CustomerGetQryExe {
 
-    @Autowired
-    private CustomerGateway customerGateway;
+    private final CustomerDbService customerDbService;
+
+    public CustomerGetQryExe(CustomerDbService customerDbService) {
+        this.customerDbService = customerDbService;
+    }
 
     public CustomerDTO execute(CustomerGetQry qry) {
-        Customer byById = customerGateway.getByById("1");
+        CustomerDO customerDO = customerDbService.getById(qry.getId());
         CustomerDTO customerDTO = new CustomerDTO();
+        BeanUtils.copyProperties(customerDO, customerDTO);
         return customerDTO;
     }
 }

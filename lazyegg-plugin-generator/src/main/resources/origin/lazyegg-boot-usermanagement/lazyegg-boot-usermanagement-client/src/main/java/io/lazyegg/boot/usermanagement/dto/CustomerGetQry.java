@@ -1,13 +1,13 @@
-package io.lazyegg.boot.usermanagement.dto;
+package io.lazyegg.boot.customermanage.dto;
 
 import com.alibaba.cola.dto.Query;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Builder
 @Data
-public class CustomerGetQry extends Query {
+@EqualsAndHashCode(callSuper = false)
+public class CustomerListQry extends Query {
     private String id;
-
-    public CustomerGetQry(String id) {
-        this.id = id;
-    }
 }

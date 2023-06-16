@@ -1,12 +1,13 @@
-package io.lazyegg.boot.usermanagement.web;
+package io.lazyegg.boot.customermanage.web;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
-import io.lazyegg.boot.usermanagement.api.CustomerServiceI;
-import io.lazyegg.boot.usermanagement.dto.*;
-import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
+import io.lazyegg.boot.customermanage.api.CustomerServiceI;
+import io.lazyegg.boot.customermanage.dto.*;
+import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
 import io.lazyegg.core.page.PageLongResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -15,14 +16,20 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@RequestMapping("/usermanagement")
+@RequestMapping("/customermanage")
 @RestController
+@Slf4j
 public class CustomerController {
-    private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
 
     @Resource
     private CustomerServiceI customerService;
 
+    /**
+     * 新增customer
+     *
+     * @param cmd
+     * @return
+     */
     @PostMapping("/customers")
     public ResponseEntity<Response> addCustomer(@RequestBody CustomerAddCmd cmd) {
         return new ResponseEntity<>(customerService.addCustomer(cmd), HttpStatus.CREATED);
@@ -44,13 +51,15 @@ public class CustomerController {
     /**
      * 更新customer
      *
-     * @param id                customerId
+     * @param id               customerId
      * @param customerUpdateCmd 更新实体
      * @return
      */
     @PutMapping("/customers/{id}")
     public ResponseEntity<Response> updateCustomer(@PathVariable(name = "id") String id, @RequestBody CustomerUpdateCmd customerUpdateCmd) {
-        return new ResponseEntity<>(customerService.updateCustomer(customerUpdateCmd), HttpStatus.OK);
+        customerUpdateCmd.setId(id);
+        Response customer = customerService.updateCustomer(customerUpdateCmd);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     /**
@@ -70,8 +79,11 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/customers")
-    public ResponseEntity<MultiResponse<CustomerDTO>> listCustomer() {
-        return new ResponseEntity<>(customerService.listCustomer(new CustomerListQry()), HttpStatus.OK);
+    public ResponseEntity<MultiResponse<CustomerDTO>> listCustomer(@RequestParam(required = false) String id) {
+        CustomerListQry.CustomerListQryBuilder builder = CustomerListQry.builder();
+        builder.id(id);
+        CustomerListQry qry = builder.build();
+        return new ResponseEntity<>(customerService.listCustomer(qry), HttpStatus.OK);
     }
 
 
@@ -80,22 +92,17 @@ public class CustomerController {
      *
      * @return
      */
-    @GetMapping(value = "/customers", params = {"page", "size"})
-    public ResponseEntity<PageLongResponse<CustomerDTO>> pageCustomer(@RequestParam int page, @RequestParam int size) {
-        CustomerPageQry pageQry = new CustomerPageQry();
+    @GetMapping(value = "/customers/actions/page", params = {"page", "size"})
+    public ResponseEntity<PageLongResponse<CustomerDTO>> pageCustomer(
+            @RequestParam int page,
+            @RequestParam int size,
+            @RequestParam(required = false) String id) {
+        CustomerPageQry.CustomerPageQryBuilder builder = CustomerPageQry.builder();
+        builder.id(id);
+        CustomerPageQry pageQry = builder.build();
         pageQry.setPageIndex(page);
         pageQry.setPageSize(size);
         return new ResponseEntity<>(customerService.pageCustomer(pageQry), HttpStatus.OK);
-    }
-
-    /**
-     * 统计customer
-     *
-     * @return
-     */
-    @GetMapping(value = "/customers/actions/count")
-    public ResponseEntity<SingleResponse<CustomerDTO>> countCustomer() {
-        return new ResponseEntity<>(customerService.countCustomer(new CustomerCountQry()), HttpStatus.OK);
     }
 
 }

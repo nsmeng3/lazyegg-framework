@@ -1,7 +1,7 @@
-package io.lazyegg.boot.usermanagement.customer.executor;
+package io.lazyegg.boot.customermanage.customer.executor;
 
-import io.lazyegg.boot.usermanagement.domain.customer.gateway.CustomerGateway;
-import io.lazyegg.boot.usermanagement.dto.CustomerDelCmd;
+import io.lazyegg.boot.customermanage.dto.CustomerDelCmd;
+import io.lazyegg.boot.customermanage.customer.CustomerDbService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -19,11 +19,9 @@ public class CustomerDelCmdExe {
     private static final Logger log = LoggerFactory.getLogger(CustomerDelCmdExe.class);
 
     @Resource
-    private CustomerGateway customerGateway;
+    private CustomerDbService customerDbService;
 
     public void execute(CustomerDelCmd customerDelCmd) {
-        customerGateway.removeCustomer(customerDelCmd);
-        return;
+        customerDbService.removeById(customerDelCmd.getId());
     }
 }
-

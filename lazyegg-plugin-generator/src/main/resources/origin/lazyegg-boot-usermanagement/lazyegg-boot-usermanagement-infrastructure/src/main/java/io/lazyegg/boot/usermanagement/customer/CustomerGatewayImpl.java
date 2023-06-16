@@ -1,12 +1,14 @@
-package io.lazyegg.boot.usermanagement.customer;
+package io.lazyegg.boot.customermanage.customer;
 
+import com.alibaba.cola.exception.SysException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
-import io.lazyegg.boot.usermanagement.domain.customer.Customer;
-import io.lazyegg.boot.usermanagement.domain.customer.gateway.CustomerGateway;
-import io.lazyegg.boot.usermanagement.dto.CustomerDelCmd;
-import io.lazyegg.boot.usermanagement.dto.CustomerUpdateCmd;
+import io.lazyegg.boot.customermanage.domain.customer.Customer;
+import io.lazyegg.boot.customermanage.domain.customer.gateway.CustomerGateway;
+import io.lazyegg.boot.customermanage.dto.CustomerDelCmd;
+import io.lazyegg.boot.customermanage.dto.CustomerUpdateCmd;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,32 +18,25 @@ import java.util.List;
 @Component
 public class CustomerGatewayImpl implements CustomerGateway {
     @Autowired
-    private CustomerMapper customerMapper;
+    private CustomerDbService customerDbService;
 
     public Customer getByById(String customerId) {
-        CustomerDO customerDO = customerMapper.getById(customerId);
-        //Convert to Customer
-        return null;
+        throw new SysException("getByById not implement");
     }
 
     @Override
     public void removeCustomer(CustomerDelCmd cmd) {
-        customerMapper.deleteById("");
+        throw new SysException("getByById not implement");
     }
 
     @Override
     public void updateCustomer(CustomerUpdateCmd cmd) {
-        customerMapper.update(new CustomerDO(), new UpdateWrapper<>());
+        throw new SysException("getByById not implement");
     }
 
     @Override
-    public List<Customer> pageCustomer(int pageIndex, int pageSize) {
-        PageDTO<CustomerDO> customerDOPageDTO = customerMapper.selectPage(new PageDTO<>(pageIndex, pageSize), new QueryWrapper<>());
-        return new ArrayList<>();
+    public List<Customer> listCustomer(int pageIndex, int pageSize) {
+        throw new SysException("getByById not implement");
     }
 
-    @Override
-    public long getCount() {
-        return customerMapper.selectCount(new QueryWrapper<>());
-    }
 }
