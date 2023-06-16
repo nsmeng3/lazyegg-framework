@@ -7,7 +7,6 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import java.util.Date;
 
 /**
  * BaseDO
@@ -18,7 +17,7 @@ import java.util.Date;
 
 @Data
 @MappedSuperclass
-public class BaseDO extends BaseNoLogicDeleteDO{
+public class BaseDO extends BaseNoLogicDeleteDO {
 
     @TableField(fill = FieldFill.INSERT, value = "is_deleted")
     @TableLogic

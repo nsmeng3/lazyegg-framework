@@ -8,5 +8,4 @@ package io.lazyegg.boot.component.db;
 public abstract class DataSourceFactory {
 
 
-
 }

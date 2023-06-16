@@ -9,5 +9,5 @@ import java.io.Serializable;
 
 @NoRepositoryBean
 public interface IBaseRepository<T, ID extends Serializable> extends
-    JpaRepository<T, ID>, JpaSpecificationExecutor<T>, QuerydslPredicateExecutor<T> {
+        JpaRepository<T, ID>, JpaSpecificationExecutor<T>, QuerydslPredicateExecutor<T> {
 }

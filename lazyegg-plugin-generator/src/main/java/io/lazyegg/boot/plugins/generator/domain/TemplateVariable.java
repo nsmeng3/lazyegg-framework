@@ -49,7 +49,7 @@ public class TemplateVariable {
 
     public void setEntityName(String entityName) {
         if (entityName.length() < 1) {
-            throw new RuntimeException("entityName length must be greater than 1" );
+            throw new RuntimeException("entityName length must be greater than 1");
         }
         this.entityName = initialLowerCase(entityName);
         this.entityNameLowercase = entityName.toLowerCase();
@@ -90,4 +90,3 @@ public class TemplateVariable {
     }
 
 }
-

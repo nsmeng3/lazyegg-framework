@@ -10,7 +10,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
@@ -43,7 +42,7 @@ public class DataSourceAspect {
         }
         try {
             return joinPoint.proceed();
-        }finally {
+        } finally {
             DynamicContextHolder.clean();
         }
     }

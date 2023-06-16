@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author DifferentW  nsmeng3@163.com
  */
 @Slf4j
-public class DruidDataSourceFactory extends DataSourceFactory implements DataSourceService<DruidDataSource>{
+public class DruidDataSourceFactory extends DataSourceFactory implements DataSourceService<DruidDataSource> {
 
     public static DruidDataSourceFactory build() {
         return new DruidDataSourceFactory();

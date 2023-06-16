@@ -65,7 +65,7 @@ public class LeggFileUtil {
                     String oldString = replaceEntry.getKey();
                     String newString = replaceEntry.getValue();
                     if (s.startsWith("package ") || s.startsWith("import ")) {
-                        s= s.replace("customer", "${entityNameLowercase}");
+                        s = s.replace("customer", "${entityNameLowercase}");
                     }
                     if (s.contains(oldString)) {
                         s = s.replace(oldString, newString);
@@ -187,10 +187,10 @@ public class LeggFileUtil {
         return getResourceDir(path);
     }
 
-    public static void delFile(File index){
-        if (index.isDirectory()){
+    public static void delFile(File index) {
+        if (index.isDirectory()) {
             File[] files = index.listFiles();
-            for (File in: files) {
+            for (File in : files) {
                 delFile(in);
             }
         }
@@ -200,4 +200,3 @@ public class LeggFileUtil {
     }
 
 }
-

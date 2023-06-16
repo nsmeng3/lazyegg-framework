@@ -18,7 +18,7 @@ public class LeggTreeUtil<T, E extends Map<String, Object>> {
     /**
      * 构造方法
      *
-     * @param nodeList 待构造数据集合
+     * @param nodeList   待构造数据集合
      * @param rootNodeId 根节点id
      */
     public LeggTreeUtil(List<TreeNode<T, E>> nodeList, T rootNodeId) {
@@ -92,7 +92,7 @@ public class LeggTreeUtil<T, E extends Map<String, Object>> {
      * 根据节点id查找节点
      *
      * @param treeNodes 树形结构实体集合
-     * @param id 查找节点id
+     * @param id        查找节点id
      * @return
      */
     public List<TreeNode<T, E>> findChildNode(List<TreeNode<T, E>> treeNodes, T id) {
@@ -105,7 +105,7 @@ public class LeggTreeUtil<T, E extends Map<String, Object>> {
      * 查找子节点
      *
      * @param treeNode 树形结构实体
-     * @param id 查找节点id
+     * @param id       查找节点id
      * @return
      */
     public List<TreeNode<T, E>> findChildNode(TreeNode<T, E> treeNode, T id) {
@@ -120,9 +120,9 @@ public class LeggTreeUtil<T, E extends Map<String, Object>> {
      * 查找子节点
      *
      * @param treeNodes 树形结构实体集合
-     * @param id 查找节点id
-     * @param b 辅助判断标识
-     * @param nodes 返回值集合
+     * @param id        查找节点id
+     * @param b         辅助判断标识
+     * @param nodes     返回值集合
      */
     private void findChildNode(List<TreeNode<T, E>> treeNodes, T id, boolean b, List<TreeNode<T, E>> nodes) {
         for (TreeNode<T, E> treeNode : treeNodes) {

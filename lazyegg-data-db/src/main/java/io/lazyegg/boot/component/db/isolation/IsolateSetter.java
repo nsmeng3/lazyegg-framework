@@ -48,8 +48,8 @@ public interface IsolateSetter extends IDefaultSetter {
     @Override
     default void setQueryDefault(IQuery query) {
         query.where()
-            .apply("env", SqlOp.EQ, EnvUtils.currEnv())
-            .apply("tenant", SqlOp.EQ, TenantUtils.findUserTenant());
+                .apply("env", SqlOp.EQ, EnvUtils.currEnv())
+                .apply("tenant", SqlOp.EQ, TenantUtils.findUserTenant());
     }
 
     /**
@@ -60,7 +60,7 @@ public interface IsolateSetter extends IDefaultSetter {
     @Override
     default void setUpdateDefault(IUpdate updater) {
         updater.where()
-            .apply("env", SqlOp.EQ, EnvUtils.currEnv())
-            .apply("tenant", SqlOp.EQ, TenantUtils.findUserTenant());
+                .apply("env", SqlOp.EQ, EnvUtils.currEnv())
+                .apply("tenant", SqlOp.EQ, TenantUtils.findUserTenant());
     }
 }

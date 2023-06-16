@@ -14,9 +14,11 @@ import io.lazyegg.boot.component.db.properties.DataSourceProperties;
 import io.lazyegg.boot.component.db.properties.DynamicDataSourceProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,9 +36,9 @@ import java.util.Map;
 //@ConditionalOnProperty(prefix = "spring.datasource.druid", name = "enable", havingValue = "true")
 @EnableConfigurationProperties({DynamicDataSourceProperties.class, DruidStatProperties.class})
 @Import({DruidSpringAopConfiguration.class,
-    DruidStatViewServletConfiguration.class,
-    DruidWebStatFilterConfiguration.class,
-    DruidFilterConfiguration.class, DataSourceAspect.class})
+        DruidStatViewServletConfiguration.class,
+        DruidWebStatFilterConfiguration.class,
+        DruidFilterConfiguration.class, DataSourceAspect.class})
 public class DruidConfig extends BaseDataSourceConfig {
 
     @Bean

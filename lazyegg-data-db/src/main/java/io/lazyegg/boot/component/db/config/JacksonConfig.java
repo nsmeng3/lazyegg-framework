@@ -45,7 +45,7 @@ public class JacksonConfig {
             @Override
             public void serialize(Object o, JsonGenerator jsonGenerator,
                                   SerializerProvider serializerProvider)
-                throws IOException {
+                    throws IOException {
                 jsonGenerator.writeString("");
             }
         });

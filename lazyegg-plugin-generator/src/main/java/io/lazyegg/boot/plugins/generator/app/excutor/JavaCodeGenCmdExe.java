@@ -72,7 +72,7 @@ public class JavaCodeGenCmdExe {
         LeggFileUtil.listFile(templateDir, templateFileList, false);
         for (File templateFile : templateFileList) {
             String name = templateFile.getName();
-            if ("package-info.java.vm".equals(name)|| name.endsWith("Test.java.vm")) {
+            if ("package-info.java.vm".equals(name) || name.endsWith("Test.java.vm")) {
                 continue;
             }
             templateFileInfos.add(new TemplateFileInfo(templateFile));
@@ -99,8 +99,6 @@ public class JavaCodeGenCmdExe {
 
         context.setCodeFiles(codeFiles);
     }
-
-
 
 
     private void outFile(JavaCodeGenContext ctx) {
@@ -148,4 +146,3 @@ public class JavaCodeGenCmdExe {
     }
 
 }
-

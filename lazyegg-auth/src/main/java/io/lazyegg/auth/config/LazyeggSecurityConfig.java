@@ -112,7 +112,7 @@ public class LazyeggSecurityConfig {
                 .exceptionHandling()
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()
-                 // 过滤器
+                // 过滤器
                 .addFilterBefore(new GlobalExceptionHandlerFilter(), DisableEncodeUrlFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
         ;

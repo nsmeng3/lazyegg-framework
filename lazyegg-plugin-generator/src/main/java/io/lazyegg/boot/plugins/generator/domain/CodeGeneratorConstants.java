@@ -3,8 +3,6 @@ package io.lazyegg.boot.plugins.generator.domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Map;
-
 /**
  * CodeGeneratorConstons
  *
@@ -16,4 +14,3 @@ public class CodeGeneratorConstants {
 
 
 }
-

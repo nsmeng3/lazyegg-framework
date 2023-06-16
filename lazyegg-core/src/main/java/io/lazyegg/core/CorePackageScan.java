@@ -39,7 +39,7 @@ public class CorePackageScan {
             T beanInstance = null;
             //优先按type查
             try {
-                beanInstance = (T)applicationContext.getBean(targetClz);
+                beanInstance = (T) applicationContext.getBean(targetClz);
             } catch (Exception e) {
             }
 
@@ -51,8 +51,7 @@ public class CorePackageScan {
                     simpleName = Character.toLowerCase(simpleName.charAt(0)) + simpleName.substring(1);
                     beanInstance = (T) applicationContext.getBean(simpleName);
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 log.warn("No bean found for " + targetClz.getCanonicalName());
             }
             return beanInstance;
@@ -77,8 +76,8 @@ public class CorePackageScan {
 
     public static class ResponseHandlerFactory {
 
-        public static ResponseHandlerI get(){
-            if(ApplicationContextHelper.getBean(ResponseHandlerI.class) != null){
+        public static ResponseHandlerI get() {
+            if (ApplicationContextHelper.getBean(ResponseHandlerI.class) != null) {
                 return ApplicationContextHelper.getBean(ResponseHandlerI.class);
             }
             return new DefaultResponseHandler();

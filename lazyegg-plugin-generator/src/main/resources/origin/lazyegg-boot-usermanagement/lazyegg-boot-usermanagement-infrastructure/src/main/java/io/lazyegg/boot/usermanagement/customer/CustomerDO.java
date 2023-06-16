@@ -8,6 +8,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @TableName("customer")
 @EqualsAndHashCode(callSuper = true)
-public class CustomerDO extends BaseDO{
+public class CustomerDO extends BaseDO {
 
 }

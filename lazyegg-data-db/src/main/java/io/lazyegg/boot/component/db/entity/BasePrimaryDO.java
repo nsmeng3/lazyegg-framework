@@ -1,6 +1,5 @@
 package io.lazyegg.boot.component.db.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import javax.persistence.Id;

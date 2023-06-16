@@ -8,8 +8,6 @@ import io.lazyegg.boot.customermanage.dto.*;
 import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
 import io.lazyegg.core.page.PageLongResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +49,7 @@ public class CustomerController {
     /**
      * 更新customer
      *
-     * @param id               customerId
+     * @param id                customerId
      * @param customerUpdateCmd 更新实体
      * @return
      */
