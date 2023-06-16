@@ -15,6 +15,7 @@
         <module>lazyegg-data-db</module>
         <module>lazyegg-auth</module>
         <module>lazyegg-mq-activemq</module>
+        <module>lazyegg-swagger</module>
     </modules>
 
     <properties>
