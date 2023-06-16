@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -25,11 +26,10 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(Response.buildFailure("400", exception.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = {SysException.class, RuntimeException.class})
+    @ExceptionHandler(value = {SysException.class, RuntimeException.class, HttpMessageConversionException.class})
     public ResponseEntity<Object> sysException(Exception exception) {
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(Response.buildFailure("500", "系统异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
-

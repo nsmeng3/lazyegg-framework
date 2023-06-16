@@ -5,6 +5,7 @@ import com.alibaba.cola.exception.BizException;
 import com.alibaba.cola.exception.SysException;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import io.lazyegg.core.CorePackageScan;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -59,13 +60,13 @@ public class CatchLogAspect {
             if (log.isDebugEnabled()) {
                 log.error(e.getMessage(), e);
             }
-            return ResponseHandlerFactory.get().handle(returnType, (BaseException) e);
+            return CorePackageScan.ResponseHandlerFactory.get().handle(returnType, (BaseException) e);
         }
 
         if (e instanceof SysException) {
             log.error("SYS EXCEPTION :");
             log.error(e.getMessage(), e);
-            return ResponseHandlerFactory.get().handle(returnType, ((SysException) e));
+            return CorePackageScan.ResponseHandlerFactory.get().handle(returnType, ((SysException) e));
         }
 
         log.error("UNKNOWN EXCEPTION :");

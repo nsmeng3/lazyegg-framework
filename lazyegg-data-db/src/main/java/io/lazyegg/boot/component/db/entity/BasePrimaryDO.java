@@ -3,6 +3,9 @@ package io.lazyegg.boot.component.db.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 /**
  * 主键DO
  * BasePrimaryDO
@@ -12,8 +15,12 @@ import lombok.Data;
 
 
 @Data
+@MappedSuperclass
 public class BasePrimaryDO {
 
+    @Id
     private String id;
+
+    private String tenantId;
 
 }

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
+import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
 /**
@@ -13,6 +14,7 @@ import java.util.Date;
  */
 
 @Data
+@MappedSuperclass
 public class BaseNoLogicDeleteDO extends BasePrimaryDO {
 
     @TableField(fill = FieldFill.INSERT)
