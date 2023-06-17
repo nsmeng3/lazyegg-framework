@@ -1,13 +1,18 @@
-package io.lazyegg.boot.customermanage.customer;
+package io.lazyegg.boot.usermanagement.customer;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.lazyegg.boot.component.db.entity.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 @Data
-@TableName("customer")
 @EqualsAndHashCode(callSuper = true)
-public class CustomerDO extends BaseDO {
+@TableName("customer")
+@Table(name = "customer")
+@Entity
+public class CustomerDO extends BaseDO{
 
 }

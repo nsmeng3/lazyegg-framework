@@ -1,11 +1,11 @@
-package io.lazyegg.boot.customermanage.web;
+package io.lazyegg.boot.usermanagement.web;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
-import io.lazyegg.boot.customermanage.api.CustomerServiceI;
-import io.lazyegg.boot.customermanage.dto.*;
-import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.usermanagement.api.CustomerServiceI;
+import io.lazyegg.boot.usermanagement.dto.*;
+import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
 import io.lazyegg.core.page.PageLongResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@RequestMapping("/customermanage")
+@RequestMapping("/usermanagement")
 @RestController
 @Slf4j
 public class CustomerController {

@@ -1,11 +1,11 @@
-package io.lazyegg.boot.customermanage.customer.executor.query;
+package io.lazyegg.boot.usermanagement.customer.executor.query;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.lazyegg.boot.component.db.entity.BaseDO;
-import io.lazyegg.boot.customermanage.customer.CustomerDO;
-import io.lazyegg.boot.customermanage.customer.CustomerDbService;
-import io.lazyegg.boot.customermanage.dto.CustomerListQry;
-import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.usermanagement.customer.CustomerDO;
+import io.lazyegg.boot.usermanagement.customer.CustomerDbService;
+import io.lazyegg.boot.usermanagement.dto.CustomerListQry;
+import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;

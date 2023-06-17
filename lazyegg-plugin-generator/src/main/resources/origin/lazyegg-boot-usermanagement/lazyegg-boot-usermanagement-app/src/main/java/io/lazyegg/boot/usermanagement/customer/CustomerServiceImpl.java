@@ -1,16 +1,16 @@
-package io.lazyegg.boot.customermanage.customer;
+package io.lazyegg.boot.usermanagement.customer;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
 import com.baomidou.mybatisplus.extension.plugins.pagination.PageDTO;
-import io.lazyegg.boot.customermanage.api.CustomerServiceI;
-import io.lazyegg.boot.customermanage.customer.executor.CustomerAddCmdExe;
-import io.lazyegg.boot.customermanage.customer.executor.CustomerDelCmdExe;
-import io.lazyegg.boot.customermanage.customer.executor.CustomerUpdateCmdExe;
-import io.lazyegg.boot.customermanage.customer.executor.query.*;
-import io.lazyegg.boot.customermanage.dto.*;
-import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.usermanagement.api.CustomerServiceI;
+import io.lazyegg.boot.usermanagement.customer.executor.CustomerAddCmdExe;
+import io.lazyegg.boot.usermanagement.customer.executor.CustomerDelCmdExe;
+import io.lazyegg.boot.usermanagement.customer.executor.CustomerUpdateCmdExe;
+import io.lazyegg.boot.usermanagement.customer.executor.query.*;
+import io.lazyegg.boot.usermanagement.dto.*;
+import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
 import io.lazyegg.core.exception.CatchAndLog;
 import io.lazyegg.core.page.PageLongResponse;
 import org.springframework.beans.BeanUtils;

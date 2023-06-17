@@ -1,7 +1,7 @@
-package io.lazyegg.boot.customermanage.customer.executor;
+package io.lazyegg.boot.usermanagement.customer.executor;
 
-import io.lazyegg.boot.customermanage.customer.CustomerDbService;
-import io.lazyegg.boot.customermanage.dto.CustomerDelCmd;
+import io.lazyegg.boot.usermanagement.customer.CustomerDbService;
+import io.lazyegg.boot.usermanagement.dto.CustomerDelCmd;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

@@ -1,10 +1,10 @@
-package io.lazyegg.boot.customermanage.api;
+package io.lazyegg.boot.usermanagement.api;
 
 import com.alibaba.cola.dto.MultiResponse;
 import com.alibaba.cola.dto.Response;
 import com.alibaba.cola.dto.SingleResponse;
-import io.lazyegg.boot.customermanage.dto.*;
-import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.usermanagement.dto.*;
+import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
 import io.lazyegg.core.page.PageLongResponse;
 
 public interface CustomerServiceI {
