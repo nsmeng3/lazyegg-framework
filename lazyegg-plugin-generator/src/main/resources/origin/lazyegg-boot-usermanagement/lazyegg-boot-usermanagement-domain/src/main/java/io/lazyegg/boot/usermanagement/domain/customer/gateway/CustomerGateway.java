@@ -1,8 +1,8 @@
-package io.lazyegg.boot.customermanage.domain.customer.gateway;
+package io.lazyegg.boot.usermanagement.domain.customer.gateway;
 
-import io.lazyegg.boot.customermanage.domain.customer.Customer;
-import io.lazyegg.boot.customermanage.dto.CustomerDelCmd;
-import io.lazyegg.boot.customermanage.dto.CustomerUpdateCmd;
+import io.lazyegg.boot.usermanagement.domain.customer.Customer;
+import io.lazyegg.boot.usermanagement.dto.CustomerDelCmd;
+import io.lazyegg.boot.usermanagement.dto.CustomerUpdateCmd;
 
 import java.util.List;
 

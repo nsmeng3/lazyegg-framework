@@ -1,4 +1,4 @@
-package io.lazyegg.boot.customermanage.customer;
+package io.lazyegg.boot.usermanagement.customer;
 
 import icu.mhb.mybatisplus.plugln.base.mapper.JoinBaseMapper;
 import org.apache.ibatis.annotations.Mapper;

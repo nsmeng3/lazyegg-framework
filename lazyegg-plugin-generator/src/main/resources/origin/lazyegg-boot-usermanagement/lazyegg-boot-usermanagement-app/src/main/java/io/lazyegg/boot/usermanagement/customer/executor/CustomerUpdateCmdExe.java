@@ -1,10 +1,10 @@
-package io.lazyegg.boot.customermanage.customer.executor;
+package io.lazyegg.boot.usermanagement.customer.executor;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import io.lazyegg.boot.customermanage.customer.CustomerDO;
-import io.lazyegg.boot.customermanage.customer.CustomerDbService;
-import io.lazyegg.boot.customermanage.dto.CustomerUpdateCmd;
-import io.lazyegg.boot.customermanage.dto.data.CustomerDTO;
+import io.lazyegg.boot.usermanagement.customer.CustomerDO;
+import io.lazyegg.boot.usermanagement.customer.CustomerDbService;
+import io.lazyegg.boot.usermanagement.dto.CustomerUpdateCmd;
+import io.lazyegg.boot.usermanagement.dto.data.CustomerDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

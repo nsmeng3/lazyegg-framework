@@ -1,4 +1,4 @@
-package io.lazyegg.boot.customermanage.dto;
+package io.lazyegg.boot.usermanagement.dto;
 
 import com.alibaba.cola.dto.PageQuery;
 import lombok.Builder;

@@ -1,10 +1,10 @@
-package io.lazyegg.boot.customermanage.customer;
+package io.lazyegg.boot.usermanagement.customer;
 
 import com.alibaba.cola.exception.SysException;
-import io.lazyegg.boot.customermanage.domain.customer.Customer;
-import io.lazyegg.boot.customermanage.domain.customer.gateway.CustomerGateway;
-import io.lazyegg.boot.customermanage.dto.CustomerDelCmd;
-import io.lazyegg.boot.customermanage.dto.CustomerUpdateCmd;
+import io.lazyegg.boot.usermanagement.domain.customer.Customer;
+import io.lazyegg.boot.usermanagement.domain.customer.gateway.CustomerGateway;
+import io.lazyegg.boot.usermanagement.dto.CustomerDelCmd;
+import io.lazyegg.boot.usermanagement.dto.CustomerUpdateCmd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

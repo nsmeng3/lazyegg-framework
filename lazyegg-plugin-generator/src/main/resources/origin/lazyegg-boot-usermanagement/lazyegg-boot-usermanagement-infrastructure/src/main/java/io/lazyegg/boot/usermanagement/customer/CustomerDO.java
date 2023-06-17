@@ -1,4 +1,4 @@
-package io.lazyegg.boot.customermanage.customer;
+package io.lazyegg.boot.usermanagement.customer;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.lazyegg.boot.component.db.entity.BaseDO;
