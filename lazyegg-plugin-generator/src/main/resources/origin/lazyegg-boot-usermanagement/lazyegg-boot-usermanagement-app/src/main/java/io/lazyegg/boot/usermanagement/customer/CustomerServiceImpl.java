@@ -40,8 +40,8 @@ public class CustomerServiceImpl implements CustomerServiceI {
     private CustomerPageQryExe customerPageQryExe;
 
     public Response addCustomer(CustomerAddCmd customerAddCmd) {
-        customerAddCmdExe.execute(customerAddCmd);
-        return Response.buildSuccess();
+        CustomerDTO customerDTO = customerAddCmdExe.execute(customerAddCmd);
+        return SingleResponse.of(customerDTO);
     }
 
     @Override
