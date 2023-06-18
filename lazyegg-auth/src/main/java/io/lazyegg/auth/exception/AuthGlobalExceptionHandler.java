@@ -43,14 +43,4 @@ public class AuthGlobalExceptionHandler {
         log.error("{}", exception.getMessage(), exception);
         return new ResponseEntity<>(Response.buildFailure("400", "接口权限存在异常，请联系管理员"), HttpStatus.FORBIDDEN);
     }
-
-    /**
-     * 其他异常
-     */
-    @ExceptionHandler(value = Exception.class)
-    public ResponseEntity<Object> exception(Exception exception) {
-        log.error("{}", exception.getMessage(), exception);
-        return ResponseEntity.internalServerError()
-                .body(Response.buildFailure("500", "系统异常，请联系管理员"));
-    }
 }
