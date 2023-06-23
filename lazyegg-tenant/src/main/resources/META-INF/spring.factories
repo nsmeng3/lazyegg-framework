@@ -1,3 +1,2 @@
-# Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.lazyegg.DbPackageScanConfig
+  io.lazyegg.TenantPackageScanConfig
