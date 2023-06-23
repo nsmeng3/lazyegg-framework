@@ -13,6 +13,7 @@
         <module>lazyegg-plugin-generator</module>
         <module>lazyegg-core</module>
         <module>lazyegg-data-db</module>
+        <module>lazyegg-tenant</module>
         <module>lazyegg-auth</module>
         <module>lazyegg-mq-activemq</module>
         <module>lazyegg-swagger</module>
@@ -29,7 +30,7 @@
         <spring-boot.version>2.7.7</spring-boot.version>
         <cola.version>4.3.0</cola.version>
         <druid.version>1.2.15</druid.version>
-        <mybatis.plus.boot.starter.version>3.5.2</mybatis.plus.boot.starter.version>
+        <mybatis.plus.boot.starter.version>3.5.3.1</mybatis.plus.boot.starter.version>
         <fluent-mybatis.version>1.9.8</fluent-mybatis.version>
         <fastjson.version>2.0.21.graal</fastjson.version>
         <querydsl.version>5.0.0</querydsl.version>
