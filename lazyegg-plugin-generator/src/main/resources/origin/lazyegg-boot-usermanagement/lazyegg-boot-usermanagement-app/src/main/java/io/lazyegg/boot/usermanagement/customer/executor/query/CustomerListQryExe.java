@@ -1,7 +1,7 @@
 package io.lazyegg.boot.usermanagement.customer.executor.query;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import io.lazyegg.boot.component.db.entity.BaseDO;
+import io.lazyegg.db.entity.BaseDO;
 import io.lazyegg.boot.usermanagement.customer.CustomerDO;
 import io.lazyegg.boot.usermanagement.customer.CustomerDbService;
 import io.lazyegg.boot.usermanagement.dto.CustomerListQry;

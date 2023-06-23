@@ -1,7 +1,7 @@
 package io.lazyegg.boot.usermanagement.customer;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.lazyegg.boot.component.db.entity.BaseDO;
+import io.lazyegg.db.entity.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
