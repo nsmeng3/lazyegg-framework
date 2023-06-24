@@ -2,7 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.lazyegg</groupId>
+    <parent>
+        <groupId>io.lazyegg</groupId>
+        <artifactId>lazyegg-dependencies</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>lazyegg-framework</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
@@ -25,14 +30,6 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-<!--        <spring-boot.version>2.7.13</spring-boot.version>-->
-<!--        <cola.version>4.3.0</cola.version>-->
-<!--        <druid.version>1.2.15</druid.version>-->
-<!--        <mybatis.plus.boot.starter.version>3.5.3.1</mybatis.plus.boot.starter.version>-->
-<!--        <fluent-mybatis.version>1.9.8</fluent-mybatis.version>-->
-<!--        <fastjson.version>2.0.21.graal</fastjson.version>-->
-<!--        <querydsl.version>5.0.0</querydsl.version>-->
     </properties>
 
     <dependencies>
@@ -70,18 +67,9 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
     </dependencies>
-
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.lazyegg</groupId>
-                <artifactId>lazyegg-dependencies</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>
