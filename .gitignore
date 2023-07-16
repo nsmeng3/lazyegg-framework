@@ -82,3 +82,4 @@ secrets.yml
 .sts4-cache
 cache/
 node_modules/
+package-lock.json
