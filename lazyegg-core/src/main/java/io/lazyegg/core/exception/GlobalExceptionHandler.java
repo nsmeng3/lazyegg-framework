@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(Response.buildFailure("500", errMessage), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(value = {SysException.class, RuntimeException.class})
+    @ExceptionHandler(value = {SysException.class, Exception.class})
     public ResponseEntity<Object> sysException(Exception exception) {
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(Response.buildFailure("500", "系统异常请联系管理员"), HttpStatus.INTERNAL_SERVER_ERROR);
