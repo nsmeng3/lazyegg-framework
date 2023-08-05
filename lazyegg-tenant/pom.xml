@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>io.lazyegg</groupId>
-            <artifactId>lazyegg-data-db</artifactId>
+            <artifactId>lazyegg-database</artifactId>
         </dependency>
     </dependencies>
 

@@ -16,7 +16,7 @@
     <modules>
         <module>lazyegg-plugin-generator</module>
         <module>lazyegg-core</module>
-        <module>lazyegg-data-db</module>
+        <module>lazyegg-database</module>
         <module>lazyegg-tenant</module>
         <module>lazyegg-auth</module>
         <module>lazyegg-mq-activemq</module>
