@@ -63,9 +63,6 @@ public class MybatisPlusPluginsConfig {
 
     private GlobalConfig.DbConfig dbConfig() {
         GlobalConfig.DbConfig dbConfig = new GlobalConfig.DbConfig();
-        dbConfig.setLogicDeleteField("is_delete");
-        dbConfig.setLogicDeleteValue("1");
-        dbConfig.setLogicNotDeleteValue("0");
         dbConfig.setIdType(IdType.ASSIGN_UUID);
         return dbConfig;
     }

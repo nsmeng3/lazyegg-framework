@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -15,12 +16,13 @@ import javax.persistence.MappedSuperclass;
  */
 
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @MappedSuperclass
 public class BaseDO extends BaseNoLogicDeleteDO {
 
     @TableField(fill = FieldFill.INSERT, value = "is_deleted")
-    @TableLogic
+    @TableLogic(value = "false", delval = "true")
     @Column(name = "is_deleted")
     private Boolean deleted;
 
