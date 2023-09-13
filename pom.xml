@@ -21,6 +21,7 @@
         <module>lazyegg-auth</module>
         <module>lazyegg-mq-activemq</module>
         <module>lazyegg-swagger</module>
+        <module>lazyegg-api-sdk</module>
     </modules>
 
     <properties>
