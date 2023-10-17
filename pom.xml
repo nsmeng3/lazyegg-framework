@@ -8,10 +8,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>lazyegg-framework</artifactId>
+    <artifactId>lazyegg-framework-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <name>lazyegg-framework-build</name>
+    <name>lazyegg-framework</name>
 
     <modules>
         <module>lazyegg-bom</module>
