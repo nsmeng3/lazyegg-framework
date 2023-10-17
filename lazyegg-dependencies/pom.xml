@@ -5,7 +5,7 @@
 
   <groupId>io.lazyegg</groupId>
   <artifactId>lazyegg-dependencies</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>lazyegg-boot-dependencies</name>
   <description>Lazyegg Boot Dependencies</description>
@@ -21,7 +21,7 @@
 
     <skip.springboot.maven>false</skip.springboot.maven>
 
-    <spring-boot.version>2.7.13</spring-boot.version>
+    <spring-boot.version>2.7.16</spring-boot.version>
     <spring-cloud.version>2020.0.6</spring-cloud.version>
     <cola.version>4.3.0</cola.version>
     <cola.components.version>4.3.1</cola.components.version>
