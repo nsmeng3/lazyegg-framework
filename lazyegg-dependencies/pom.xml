@@ -37,7 +37,6 @@
     <reflections.version>0.9.10</reflections.version>
     <jjwt.version>0.9.1</jjwt.version>
     <jose-jwt.version>9.26</jose-jwt.version>
-    <spring-boot.version>2.7.13</spring-boot.version>
     <cola.version>4.3.0</cola.version>
     <druid.version>1.2.15</druid.version>
     <mybatis.plus.boot.starter.version>3.5.3.1</mybatis.plus.boot.starter.version>
