@@ -21,7 +21,6 @@
 
     <skip.springboot.maven>false</skip.springboot.maven>
 
-    <lazyegg.version>1.0.0-SNAPSHOT</lazyegg.version>
     <spring-boot.version>2.7.13</spring-boot.version>
     <spring-cloud.version>2020.0.6</spring-cloud.version>
     <cola.version>4.3.0</cola.version>
@@ -60,16 +59,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-autoconfigure</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
     </dependency>
     <dependency>
       <groupId>org.yaml</groupId>
@@ -133,17 +124,6 @@
         <artifactId>hibernate-validator</artifactId>
         <version>6.0.22.Final</version>
       </dependency>
-      <!--            <dependency>-->
-      <!--                <groupId>javax.el</groupId>-->
-      <!--                <artifactId>javax.el-api</artifactId>-->
-      <!--                <version>3.0.0</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>org.glassfish.web</groupId>-->
-      <!--                <artifactId>javax.el</artifactId>-->
-      <!--                <version>2.2.6</version>-->
-      <!--            </dependency>-->
-      <!--Validation API End -->
       <!-- Misc -->
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -162,82 +142,6 @@
       </dependency>
       <!-- Misc End -->
 
-      <dependency>
-        <groupId>io.lazyegg</groupId>
-        <artifactId>lazyegg-database</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>io.lazyegg</groupId>
-        <artifactId>lazyegg-auth</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>io.lazyegg.plugin</groupId>
-        <artifactId>lazyegg-plugin-generator</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>io.lazyegg</groupId>
-        <artifactId>lazyegg-swagger</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>io.lazyegg</groupId>
-        <artifactId>lazyegg-tenant</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-      </dependency>
-
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-usermanagement-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-auth-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-db-tenant-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-upload-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-mail-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-filemanagement-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-flowable-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-document-exchange-starter</artifactId>-->
-      <!--                <version>1.0.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <!--            <dependency>-->
-      <!--                <groupId>io.lazyegg.boot</groupId>-->
-      <!--                <artifactId>lazyegg-boot-projectmanage-starter</artifactId>-->
-      <!--                <version>1.0-SNAPSHOT</version>-->
-      <!--            </dependency>-->
-      <dependency>
-        <groupId>io.lazyegg</groupId>
-        <artifactId>lazyegg-core</artifactId>
-        <version>${lazyegg.version}</version>
-      </dependency>
       <dependency>
         <groupId>io.jsonwebtoken</groupId>
         <artifactId>jjwt</artifactId>
@@ -323,7 +227,7 @@
       <dependency>
         <groupId>io.lazyegg</groupId>
         <artifactId>lazyegg-bom</artifactId>
-        <version>${lazyegg.version}</version>
+        <version>1.0.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

@@ -4,19 +4,41 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.lazyegg</groupId>
     <artifactId>lazyegg-bom</artifactId>
-    <version>${lazyegg.version}</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>lazyegg-bom</name>
     <description>lazyegg-bom</description>
-    <properties>
-        <lazyegg.version>1.0.0-SNAPSHOT</lazyegg.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.lazyegg</groupId>
                 <artifactId>lazyegg-core</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.lazyegg</groupId>
+                <artifactId>lazyegg-database</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.lazyegg</groupId>
+                <artifactId>lazyegg-auth</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.lazyegg.plugin</groupId>
+                <artifactId>lazyegg-plugin-generator</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.lazyegg</groupId>
+                <artifactId>lazyegg-swagger</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.lazyegg</groupId>
+                <artifactId>lazyegg-tenant</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
